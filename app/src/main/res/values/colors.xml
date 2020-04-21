@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="pink">#f59d92</color>
+    <color name="login_background">#FFA17E</color>
+    <color name="login_button">#4FC43D</color>
+    <color name="login_button2">#3DC4A5</color>
+    <color name="login_button3">#3D8AC4</color>
+    <color name="register_button">#EE9339</color>
+    <color name="register_check">#009688</color>
+    <color name="choice_button">#FFD6D6</color>
+    <color name="footer_main">#FFD0B1</color>
+    <color name="navbar">#FFA17E</color>
+    <color name="nav_choice">#C8B6A2</color>
+    <color name="logout_button">#EC3C3C</color>
+    <color name="community_list">#8BC7C1</color>
+    <color name="white">#ffff</color>
+</resources>

@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Society_try</string>
+    <string name="text_email_login">Username/Email</string>
+    <string name="password_login">Password</string>
+    <string name="button_login">Login</string>
+    <string name="username_email">USERNAME/EMAIL</string>
+    <string name="password">PASSWORD</string>
+    <string name="register">REGISTER</string>
+    <string name="nama_dpn">NAMA DEPAN</string>
+    <string name="nama_blkng">NAMA BELAKANG</string>
+    <string name="email">EMAIL</string>
+    <string name="password_register">PASSWORD</string>
+    <string name="laki_laki">Laki-Laki</string>
+    <string name="perempuan">Perempuan</string>
+    <string name="nama">HOB-HUB</string>
+    <string name="text1">ISI DATA DIRI ANDA DENGAN LENGKAP YA!</string>
+    <string name="daftar">DAFTAR</string>
+</resources>
