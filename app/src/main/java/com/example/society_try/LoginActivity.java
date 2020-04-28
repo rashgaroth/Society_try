@@ -35,7 +35,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText email, password;
     ProgressBar loading;
     CheckBox cekPw;
-    private static String URL_LOGIN = "http://192.168.43.63/society_php/login.php";
+    private static String URL_LOGIN = "http://192.168.100.3/society_php/login.php";
 
     private static final String TAG = LoginActivity.class.getSimpleName();
 
@@ -93,6 +93,15 @@ public class LoginActivity extends AppCompatActivity {
         if(Preferences.getLoggedInStatus(getBaseContext())){
             startActivity(new Intent(LoginActivity.this, MainMenu.class));
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent startMain = new Intent(Intent.ACTION_MAIN);
+        startMain.addCategory(Intent.CATEGORY_HOME);
+        startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(startMain);
     }
 
     void cek_form(EditText edittext){

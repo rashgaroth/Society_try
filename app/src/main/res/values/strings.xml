@@ -15,4 +15,10 @@
     <string name="nama">HOB-HUB</string>
     <string name="text1">ISI DATA DIRI ANDA DENGAN LENGKAP YA!</string>
     <string name="daftar">DAFTAR</string>
+    <string name="disukai">Disukai</string>
+    <string name="home">Home</string>
+    <string name="profile">Profile</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

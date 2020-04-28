@@ -29,7 +29,7 @@ import java.util.Map;
 public class ActivityRegister extends AppCompatActivity {
     private EditText namaDepan, namaBelakang, email_register, password_register, ulangi;
     ProgressDialog pDialog;
-    private static String URL_REGIST = "http://192.168.43.63/society_php/register.php";
+    private static String URL_REGIST = "http://192.168.100.3/society_php/register.php";
     String success;
 
     @Override
@@ -52,6 +52,28 @@ public class ActivityRegister extends AppCompatActivity {
                }
            }
        });
+    }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(false);
+        builder.setMessage("Gagal Registrasi?");
+        builder.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                startActivity(new Intent(ActivityRegister.this, LoginActivity.class));
+            }
+        });
+        builder.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //if user select "No", just cancel this dialog and continue with app
+                dialog.cancel();
+            }
+        });
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 
     private void register() {
