@@ -90,19 +90,28 @@ public class ActivityRegister extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         try {
+                            boolean cancel = false;
                             JSONObject jsonObject = new JSONObject(response);
                             success = jsonObject.optString("success");
-
                             if(success.equals("1")){
                                 if(repassword.equals(password)){
                                     Toast.makeText(ActivityRegister.this, "sukses", Toast.LENGTH_LONG).show();
                                     pDialog.dismiss();
                                     startActivity(new Intent(ActivityRegister.this, LoginActivity.class));
                                 }else{
+                                    cancel = true;
                                     ulangi.setError("Penulisan Password harus sama");
                                     ulangi.setBackgroundResource(R.drawable.textfield_error);
+                                    if (cancel){
+                                        ulangi.requestFocus();
+                                    }
                                     if (repassword.equals("")){
-
+                                        cancel = true;
+                                        ulangi.setError("Kolom wajib di isi");
+                                        ulangi.setBackgroundResource(R.drawable.textfield_error);
+                                        if (cancel){
+                                            ulangi.requestFocus();
+                                        }
                                     }
                                 }
                             }

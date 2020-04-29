@@ -52,9 +52,6 @@ public class MainMenu extends AppCompatActivity {
                 case R.id.navigation_profile:
                     selectedFragment = new ProfileFragment();
                     break;
-                default:
-                    selectedFragment = new HomeFragment();
-                    break;
             }
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout, selectedFragment)
                     .setCustomAnimations(R.anim.anim_1, R.anim.anim_2,R.anim.anim_1, R.anim.anim_2).commit();
