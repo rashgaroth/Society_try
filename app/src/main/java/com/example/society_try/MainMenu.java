@@ -38,7 +38,7 @@ public class MainMenu extends AppCompatActivity {
                 finish();
             }
         });
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout, new LoveFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout, new HomeFragment()).commit();
     }
     private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override

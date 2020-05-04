@@ -50,6 +50,7 @@ public class LoveFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getContext(), "Artikel", Toast.LENGTH_LONG).show();
+
             }
         });
     }
