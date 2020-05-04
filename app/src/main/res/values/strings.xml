@@ -18,7 +18,9 @@
     <string name="disukai">Disukai</string>
     <string name="home">Home</string>
     <string name="profile">Profile</string>
-
+    <string name="deskripsi">Deskripsi</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="don_t_have_an_account_nclick_to_register">Don\'t have an Account?\nClick to Register</string>
+    <string name="login">Login</string>
 </resources>

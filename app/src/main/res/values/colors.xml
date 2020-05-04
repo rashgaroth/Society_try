@@ -15,6 +15,12 @@
     <color name="navbar">#FFA17E</color>
     <color name="nav_choice">#C8B6A2</color>
     <color name="logout_button">#EC3C3C</color>
-    <color name="community_list">#8BC7C1</color>
-    <color name="white">#ffff</color>
+    <color name="community_list">#ACFFF7</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#FFB1B1</color>
+    <color name="black_feel">#535252</color>
+    //background
+    <color name="grad_pink">#FFFF9191</color>
+    <color name="grad_pink2">#5DB3F8</color>
+    <color name="grad_pink3">#FFFFFF</color>
 </resources>

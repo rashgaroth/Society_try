@@ -32,10 +32,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
-    EditText email, password;
+    EditText email, password2;
     ProgressBar loading;
     CheckBox cekPw;
-    private static String URL_LOGIN = "http://192.168.100.3/society_php/login.php";
+    private static String URL_LOGIN = "http://192.168.43.63/society_php/login.php";
 
     private static final String TAG = LoginActivity.class.getSimpleName();
 
@@ -49,17 +49,17 @@ public class LoginActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_login);
         email =findViewById(R.id.email);
-        password =findViewById(R.id.password);
-        loading = findViewById(R.id.loading_login);
+        password2 =findViewById(R.id.password);
+        loading = findViewById(R.id.loading);
         cekPw = findViewById(R.id.checkBox);
 
         cekPw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(cekPw.isChecked()){
-                    password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                    password2.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
                 }else{
-                    password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                    password2.setTransformationMethod(PasswordTransformationMethod.getInstance());
                 }
             }
         });
@@ -68,12 +68,12 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 final String mEmail = email.getText().toString().trim();
-                final String mPassword = password.getText().toString().trim();
+                final String mPassword = password2.getText().toString().trim();
                 if (!mEmail.isEmpty() || !mPassword.isEmpty()){
                     login(mEmail, mPassword);
                 }else{
                     cek_form(email);
-                    cek_form(password);
+                    cek_form(password2);
                 }
             }
         });
@@ -119,11 +119,11 @@ public class LoginActivity extends AppCompatActivity {
                 }else{
                     email.setBackgroundResource(R.drawable.rounded_edittext);
                 }
-                if (TextUtils.isEmpty(password.getText().toString())){
-                    password.setBackgroundResource(R.drawable.textfield_error);
+                if (TextUtils.isEmpty(password2.getText().toString())){
+                    password2.setBackgroundResource(R.drawable.textfield_error);
                     email.setError("Field harus di isi");
                 }else{
-                    password.setBackgroundResource(R.drawable.rounded_edittext);
+                    password2.setBackgroundResource(R.drawable.rounded_edittext);
                 }
             }
 
@@ -145,10 +145,10 @@ public class LoginActivity extends AppCompatActivity {
 
                     //cek error JSON
                     if (success.equals("1")){
-                            Preferences.setLoggedInUser(getBaseContext(), Preferences.getRegisteredUser(getBaseContext()));
-                            Preferences.setLoggedInStatus(getBaseContext(),true);
-                            startActivity(new Intent(getBaseContext(), MainMenu.class));
-                            finish();
+                        Preferences.setLoggedInUser(getBaseContext(), Preferences.getRegisteredUser(getBaseContext()));
+                        Preferences.setLoggedInStatus(getBaseContext(),true);
+                        startActivity(new Intent(getBaseContext(), MainMenu.class));
+                        finish();
                     } else{
                         Toast.makeText(getApplicationContext(), "Email / Password salah!", Toast.LENGTH_LONG).show();
                         loading.setVisibility(View.GONE);
@@ -166,7 +166,7 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "ERROR "+error.getMessage(), Toast.LENGTH_LONG).show();
             }
         })
-             {
+        {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("email", username);

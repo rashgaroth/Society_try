@@ -5,25 +5,81 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainMenu">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:elevation="10dp"
+        android:id="@+id/linear_bar"
+        >
 
-    <FrameLayout
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            >
+
+            <TextView
+                android:id="@+id/user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="0dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="USER"
+                android:layout_marginTop="6dp"
+                android:textColor="@color/black_feel"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/place"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:fontFamily="@font/roboto_bold"
+                android:layout_marginTop="20dp"
+                android:text="BANDUNG"
+                android:textSize="10dp"
+                android:textColor="@color/black_feel"
+                />
+
+            <TextView
+                android:layout_width="95dp"
+                android:layout_height="33dp"
+                android:layout_marginStart="120dp"
+                android:layout_marginLeft="150dp"
+                android:layout_marginEnd="82dp"
+                android:layout_marginRight="150dp"
+                android:layout_toStartOf="@+id/foto_profil"
+                android:layout_toEndOf="@+id/user_name"
+                android:fontFamily="@font/sweetpurple"
+                android:text="SOCIETY"
+                android:textColor="@color/black_feel"
+                android:textSize="30dp" />
+
+            <ImageView
+                android:id="@+id/foto_profil"
+                android:layout_width="27dp"
+                android:layout_height="27dp"
+                android:src="@drawable/bell"
+                android:layout_marginTop="7dp"
+                android:layout_marginBottom="3dp"
+                android:layout_alignParentRight="true"
+                android:contextClickable="true"
+                tools:targetApi="m" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <ScrollView
         android:id="@+id/fragment_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/bottomNavigationView"
-        >
-    </FrameLayout>
-    <Button
-        android:id="@+id/logout_button"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:text="LogOut"
-        android:textColor="@color/white"
-        android:layout_marginLeft="150dp"
-        android:layout_marginTop="200dp"
-        android:layout_above="@id/bottomNavigationView"
-        android:shadowColor="@color/colorAccent"
-        />
+        android:layout_marginTop="40dp">
+    </ScrollView>
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
@@ -32,7 +88,7 @@
         android:background="@color/white"
         app:itemIconTint="@drawable/color_selector"
         app:itemTextColor="@drawable/color_selector"
-        app:menu="@menu/bottom_navigation"
-        />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/bottom_navigation" />
 
 </RelativeLayout>
