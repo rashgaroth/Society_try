@@ -1,122 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nsv"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/pink"
-    tools:context=".LoginActivity">
-
-    <ImageView
-        android:layout_width="147dp"
-        android:layout_height="147dp"
-        android:layout_marginLeft="130dp"
-        android:layout_marginBottom="50dp"
-        android:src="@drawable/hobhub"
-        android:layout_above="@+id/textlgn"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="HOB-HUB"
-        android:layout_above="@+id/textlgn"
-        android:layout_marginLeft="110dp"
-        android:layout_marginBottom="0dp"
-        android:textSize="43dp"
-        android:fontFamily="@font/roboto_bold"
-        android:textColor="@color/white"
-        />
-    <TextView
-        android:id="@+id/textlgn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/linearLayout"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp"
-        android:text="Login"
-        android:textSize="33dp"
-        android:fontFamily="@font/roboto_bold"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
-        android:textColor="@color/black_feel" />
+    android:background="@drawable/bgapp_list">
 
     <LinearLayout
-        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/rounded"
         android:orientation="vertical"
-        android:padding="10dp">
-
-        <EditText
-            android:id="@+id/email"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@drawable/rounded_edittext"
-            android:drawablePadding="5dp"
-            android:hint="email"
-            android:padding="10dp"
-            android:layout_margin="10dp"
-            android:inputType="textEmailAddress" />
-
-        <EditText
-            android:id="@+id/password"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@drawable/rounded_edittext"
-            android:drawablePadding="5dp"
-            android:layout_margin="10dp"
-            android:hint="password"
-            android:padding="10dp"
-            android:inputType="textPassword" />
-
-        <CheckBox
-            android:id="@+id/checkBox"
+        >
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:text="Show password"
+            android:text="HOB-HUB SOCIETY"
+            android:fontFamily="@font/sweetpurple"
+            android:textSize="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="90dp"
+            android:textColor="@color/black_feel"
             />
-
+        <ProgressBar
+            android:id="@+id/loading"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="185dp"
+            android:visibility="gone"
+            />
+        <RelativeLayout
+            android:layout_width="340dp"
+            android:layout_marginTop="150dp"
+            android:layout_height="320dp"
+            android:layout_marginLeft="40dp"
+            android:background="@drawable/rounded"
+            android:foreground="?android:attr/selectableItemBackground"
+            >
+            <TextView
+                android:id="@+id/txtLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LOGIN"
+                android:textSize="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="130dp"
+                android:fontFamily="@font/roboto_bold"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/email2"
+                android:textSize="20dp"
+                android:fontFamily="@font/roboto_bold"
+                android:layout_marginTop="70dp"
+                android:layout_marginLeft="10dp"
+                />
+            <EditText
+                android:id="@+id/email"
+                android:inputType="textEmailAddress"
+                android:layout_width="320dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="100dp"
+                android:background="@drawable/rounded_edittext"
+                android:layout_marginLeft="10dp"
+                android:paddingLeft="10dp"
+                android:hint="Your Email Here!"
+                android:foreground="?android:attr/selectableItemBackground"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/password2"
+                android:textSize="20dp"
+                android:fontFamily="@font/roboto_bold"
+                android:layout_marginTop="170dp"
+                android:layout_marginLeft="10dp"
+                />
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:passwordToggleEnabled="true"
+                android:layout_marginTop="197dp"
+                android:layout_marginLeft="10dp"
+                >
+                <EditText
+                    android:id="@+id/password"
+                    android:inputType="textPassword"
+                    android:layout_width="320dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/rounded_edittext"
+                    android:paddingLeft="10dp"
+                    android:hint="*******"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+            <Button
+                android:id="@+id/login"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginTop="280dp"
+                style="@style/blueButton"
+                android:text="@string/logijn2"
+                android:textColor="@color/white"
+                android:layout_marginLeft="10dp"
+                />
+        </RelativeLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/do_not_have_an_account"
+            android:textSize="22sp"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            />
+        <TextView
+            android:id="@+id/register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/create_account"
+            android:textSize="22sp"
+            android:layout_marginBottom="10sp"
+            android:layout_gravity="center"
+            android:textColor="@color/link"
+            />
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/register"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/linearLayout"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:lineSpacingExtra="7dp"
-        android:text="@string/don_t_have_an_account_nclick_to_register"
-        android:textAlignment="center"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-        android:textColor="@color/black_feel" />
-
-    <ProgressBar
-        android:id="@+id/loading"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/login"
-        android:layout_marginBottom="75dp"
-        android:visibility="gone"
-        />
-
-    <Button
-        android:id="@+id/login"
-        android:layout_width="180dp"
-        android:layout_height="30dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="15dp"
-        android:text="@string/login"
-        style="@style/blueButton"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:fontFamily="@font/roboto_bold"
-        android:layout_margin="90dp"
-        />
-
-</RelativeLayout>
+</ScrollView>

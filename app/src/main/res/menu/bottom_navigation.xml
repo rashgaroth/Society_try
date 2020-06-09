@@ -3,18 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/navigation_home"
-        android:enabled="true"
-        app:showAsAction="ifRoom"
-        android:title="Home"
-        android:icon="@drawable/ic_action_name"/>
-
-    <item
         android:id="@+id/navigation_love"
         android:enabled="true"
         app:showAsAction="ifRoom"
         android:title="Love"
         android:icon="@drawable/ic_love"/>
+
+    <item
+        android:id="@+id/navigation_home"
+        android:enabled="true"
+        app:showAsAction="ifRoom"
+        android:title="Home"
+        android:icon="@drawable/ic_action_name"/>
 
     <item
         android:id="@+id/navigation_profile"

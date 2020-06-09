@@ -1,4 +1,4 @@
-package com.example.society_try;
+package com.example.activity;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -19,6 +19,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.Connect;
+import com.example.society_try.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -29,7 +31,7 @@ import java.util.Map;
 public class ActivityRegister extends AppCompatActivity {
     private EditText namaDepan, namaBelakang, email_register, password_register, ulangi;
     ProgressDialog pDialog;
-    private static String URL_REGIST = "http://192.168.100.3/society_php/register.php";
+    private static String URL_REGIST = "http://192.168.43.63/society_php/register.php";
     String success;
 
     @Override
@@ -46,8 +48,23 @@ public class ActivityRegister extends AppCompatActivity {
            @Override
            public void onClick(View v) {
                if(TextUtils.isEmpty(namaDepan.getText().toString())){
-                   showDialog();
-               }else{
+                   String pesan = "Nama depan harus di isi!";
+                   String isi = "Nama depan harus di isi. Contoh : ujang, maman, cecep";
+                   showDialog(pesan, isi);
+               }else if(TextUtils.isEmpty(namaBelakang.getText().toString())){
+                   String pesan = "Nama belakang harus di isi!";
+                   String isi = "Nama belakang harus di isi. Contoh : maemunah, priyono, marcecep";
+                   showDialog(pesan, isi);
+               }else if(TextUtils.isEmpty(email_register.getText().toString())){
+                   String pesan = "Email harus di isi!";
+                   String isi = "Email harus di isi. Contoh : ujang@gmail.com";
+                   showDialog(pesan, isi);
+               }else if(TextUtils.isEmpty(password_register.getText().toString())){
+                   String pesan = "Password harus di isi!";
+                   String isi = "Password harus di isi. Contoh : ******";
+                   showDialog(pesan, isi);
+               }
+               else{
                    register();
                }
            }
@@ -79,17 +96,19 @@ public class ActivityRegister extends AppCompatActivity {
     private void register() {
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(true);
-        pDialog.setMessage("Mencari data, silahkan tunggu... ");
+        pDialog.setMessage("silahkan tunggu... ");
 
+        Connect con = new Connect();
         final String nama_depan = namaDepan.getText().toString().trim();
         final String nama_belakang = namaBelakang.getText().toString().trim();
         final String email = email_register.getText().toString().trim();
         final String password = password_register.getText().toString().trim();
         final String repassword = ulangi.getText().toString().trim();
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_REGIST, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, con.Regist(), new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         try {
+                            pDialog.show();
                             boolean cancel = false;
                             JSONObject jsonObject = new JSONObject(response);
                             success = jsonObject.optString("success");
@@ -123,7 +142,7 @@ public class ActivityRegister extends AppCompatActivity {
                     new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), "sukses", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), error.getLocalizedMessage(), Toast.LENGTH_LONG).show();
                         pDialog.dismiss();
                     }
                 })
@@ -143,16 +162,16 @@ public class ActivityRegister extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
     }
-    private void showDialog(){
+    private void showDialog(String pesan, String isi){
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                 this);
 
         // set title dialog
-        alertDialogBuilder.setTitle("Data harus di isi!");
+        alertDialogBuilder.setTitle(pesan);
 
         // set pesan dari dialog
         alertDialogBuilder
-                .setMessage("Hati gebetanmu aja udah di isi sama orang\nmasa data kamu engga")
+                .setMessage(isi)
                 .setCancelable(false)
                 .setNegativeButton("Oke",new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {

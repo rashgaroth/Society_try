@@ -1,4 +1,4 @@
-package com.example.society_try;
+package com.example.activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -7,6 +7,10 @@ import android.os.Handler;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.society_try.MainMenu;
+import com.example.society_try.R;
+
 public class MainActivity extends AppCompatActivity {
 
     private EditText email, password;

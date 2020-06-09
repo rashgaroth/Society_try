@@ -23,4 +23,11 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="don_t_have_an_account_nclick_to_register">Don\'t have an Account?\nClick to Register</string>
     <string name="login">Login</string>
+    <string name="password2">Password :</string>
+    <string name="email2">Email :</string>
+    <string name="logijn2">LOGIN</string>
+    <string name="create_account">Create Account</string>
+    <string name="do_not_have_an_account">Do not have an Account?</string>
+    <string name="upload">Uploading</string>
+    <string name="select">Select</string>
 </resources>

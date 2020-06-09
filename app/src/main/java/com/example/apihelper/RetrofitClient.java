@@ -1,34 +1,27 @@
 package com.example.apihelper;
 
-import android.util.Base64;
+import com.example.Connect;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
+    private static Connect con = new Connect();
+    private static final String BASE_URL = "http://192.168.43.63/society_php/";
+    private static Retrofit retrofit;
 
-    private static final String AUTH = "Basic " + Base64.encodeToString(("rash").getBytes(), Base64.NO_WRAP);
-
-    private static final String BASE_URL = "http://192.168.100.3/society_php/login.php";
-    private static RetrofitClient mInstance;
-    private Retrofit retrofit;
-
-
-    private RetrofitClient() {
-        retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-    }
-
-    public static synchronized RetrofitClient getInstance() {
-        if (mInstance == null) {
-            mInstance = new RetrofitClient();
+    public static Retrofit getApiClient(){
+        if ( retrofit == null ){
+            Gson gson = new GsonBuilder()
+                    .setLenient()
+                    .create();
+            retrofit = new Retrofit.Builder()
+                    .baseUrl(con.connectAPI())
+                    .addConverterFactory(GsonConverterFactory.create(gson))
+                    .build();
         }
-        return mInstance;
-    }
-
-    public BaseApiServer getApi() {
-        return retrofit.create(BaseApiServer.class);
+        return retrofit;
     }
 }

@@ -1,4 +1,4 @@
-package com.example.fragment;
+package com.example.fragment.recycleview;
 
 import com.example.society_try.R;
 

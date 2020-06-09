@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.society_try">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_INTERNAL_STORAGE" />
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+    <uses-feature android:name="android.hardware.camera.flash" />
+    <uses-permission android:name="android.permission.CAMERA"/>
+
 
     <application
         android:allowBackup="true"
@@ -12,18 +23,33 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ArticleMenu"></activity>
+        <provider
+            tools:replace="android:authorities"
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true"
+            >
+            <meta-data
+                tools:replace="android:resource"
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_provider_paths"/>
+        </provider>
+        <activity android:name="com.example.artikel.MenuArtikel"
+            android:theme="@style/Theme.AppCompat.Light"
+            android:label="New Article"
+            android:launchMode="singleTask"/>
         <activity
-            android:name=".LoginActivity"
+            android:name="com.example.activity.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MainMenu"
             android:theme="@style/Theme.Design.Light.NoActionBar" />
         <activity
-            android:name=".ActivityRegister"
+            android:name="com.example.activity.ActivityRegister"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.example.activity.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

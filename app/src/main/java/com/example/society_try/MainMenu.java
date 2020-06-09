@@ -1,26 +1,33 @@
 package com.example.society_try;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
+import com.example.activity.LoginActivity;
+import com.example.controller.Preferences;
 import com.example.fragment.HomeFragment;
 import com.example.fragment.LoveFragment;
 import com.example.fragment.ProfileFragment;
+import com.example.model.User;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainMenu extends AppCompatActivity {
+import java.util.List;
+
+public class MainMenu extends AppCompatActivity implements UserView{
     FrameLayout frameLayout;
-    ImageView logout;
+    TextView user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +35,16 @@ public class MainMenu extends AppCompatActivity {
         BottomNavigationView bottomnav = findViewById(R.id.bottomNavigationView);
         bottomnav.setOnNavigationItemSelectedListener(navListener);
         frameLayout = (FrameLayout) findViewById(R.id.fragment_layout);
+        user = findViewById(R.id.user_name);
 
+        if (getIntent().getExtras() != null){
+            Bundle bundle = getIntent().getExtras();
+            user.setText(bundle.getString("Data_User"));
+        }
+
+
+        UserPresenter userPresenter = new UserPresenter(this);
+        userPresenter.getDataUser(user.getText().toString());
 
         findViewById(R.id.foto_profil).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,7 +54,7 @@ public class MainMenu extends AppCompatActivity {
                 finish();
             }
         });
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout, new HomeFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout, new LoveFragment()).commit();
     }
     private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
@@ -56,8 +72,8 @@ public class MainMenu extends AppCompatActivity {
                     selectedFragment = new ProfileFragment();
                     break;
             }
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout, selectedFragment)
-                    .setCustomAnimations(R.anim.anim_1, R.anim.anim_2,R.anim.anim_1, R.anim.anim_2).commit();
+            FragmentManager fm = getSupportFragmentManager();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout, selectedFragment).commit();
             return true;
         }
     };
@@ -82,5 +98,23 @@ public class MainMenu extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.action_bar, menu);
 
         return true;
+    }
+
+    @Override
+    public void onGetResult(List<User> users) {
+        for (int i = 0; i < users.size(); i++){
+            user.setText(users.get(i).getNama_depan());
+        }
+    }
+
+    @SuppressLint("SetTextI18n")
+    @Override
+    public void onGetError(String message) {
+            user.setText("dewa");
+    }
+
+    @Override
+    public void onGetSucces(String message) {
+
     }
 }

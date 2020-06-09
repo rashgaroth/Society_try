@@ -5,6 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/pink"
-    tools:context=".MainActivity">
+    tools:context="com.example.activity.MainActivity">
 
 </androidx.constraintlayout.widget.ConstraintLayout>

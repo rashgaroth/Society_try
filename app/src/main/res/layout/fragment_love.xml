@@ -24,6 +24,7 @@
             >
 
             <androidx.cardview.widget.CardView
+                android:foreground="?android:attr/selectableItemBackground"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_rowWeight="1"
@@ -34,9 +35,6 @@
                 app:cardBackgroundColor="@color/login_button3"
                 android:clickable="true"
                 >
-
-
-
             </androidx.cardview.widget.CardView>
 
         </GridLayout>
@@ -50,6 +48,7 @@
             tools:ignore="ExtraText">
             //Forum dan komunitas
             <androidx.cardview.widget.CardView
+                android:foreground="?android:attr/selectableItemBackground"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_columnWeight="1"
@@ -60,6 +59,9 @@
                 android:background="@color/white"
                 android:clickable="true"
                 android:id="@+id/forums"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:translationZ="2dp"
                 >
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -85,6 +87,7 @@
 
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
+                android:foreground="?android:attr/selectableItemBackground"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_columnWeight="1"
@@ -95,7 +98,9 @@
                 android:background="@color/white"
                 android:clickable="true"
                 android:focusable="true"
-                android:id="@+id/community">
+                android:id="@+id/community"
+                android:focusableInTouchMode="true"
+                android:translationZ="2dp">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -120,6 +125,7 @@
             </androidx.cardview.widget.CardView>
             //tulis artikel dan cari teman
             <androidx.cardview.widget.CardView
+                android:foreground="?android:attr/selectableItemBackground"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_columnWeight="1"
@@ -130,7 +136,9 @@
                 android:background="@color/white"
                 android:clickable="true"
                 android:focusable="true"
-                android:id="@+id/find">
+                android:id="@+id/find"
+                android:focusableInTouchMode="true"
+                android:translationZ="2dp">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -154,6 +162,7 @@
 
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
+                android:foreground="?android:attr/selectableItemBackground"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_columnWeight="1"
@@ -164,7 +173,9 @@
                 android:background="@color/white"
                 android:clickable="true"
                 android:focusable="true"
-                android:id="@+id/article">
+                android:id="@+id/article"
+                android:focusableInTouchMode="true"
+                android:translationZ="2dp">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -189,6 +200,7 @@
             </androidx.cardview.widget.CardView>
             //schedule dan chat
             <androidx.cardview.widget.CardView
+                android:foreground="?android:attr/selectableItemBackground"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_columnWeight="1"
@@ -199,7 +211,9 @@
                 android:background="@color/white"
                 android:clickable="true"
                 android:focusable="true"
-                android:id="@+id/chat">
+                android:id="@+id/chat"
+                android:focusableInTouchMode="true"
+                android:translationZ="2dp">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -223,6 +237,7 @@
 
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
+                android:foreground="?android:attr/selectableItemBackground"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_columnWeight="1"
@@ -233,7 +248,9 @@
                 android:background="@color/white"
                 android:clickable="true"
                 android:focusable="true"
-                android:id="@+id/schedule">
+                android:id="@+id/schedule"
+                android:focusableInTouchMode="true"
+                android:translationZ="2dp">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -258,6 +275,7 @@
             </androidx.cardview.widget.CardView>
             //archivment dan bikin baru
             <androidx.cardview.widget.CardView
+                android:foreground="?android:attr/selectableItemBackground"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_columnWeight="1"
@@ -268,7 +286,9 @@
                 android:background="@color/white"
                 android:clickable="true"
                 android:focusable="true"
-                android:id="@+id/achievement">
+                android:id="@+id/achievement"
+                android:focusableInTouchMode="true"
+                android:translationZ="2dp">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -291,6 +311,7 @@
 
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
+                android:foreground="?android:attr/selectableItemBackground"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_columnWeight="1"
@@ -301,7 +322,9 @@
                 android:background="@color/white"
                 android:clickable="true"
                 android:focusable="true"
-                android:id="@+id/create">
+                android:id="@+id/create"
+                android:focusableInTouchMode="true"
+                android:translationZ="2dp">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -325,6 +348,7 @@
 
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
+                android:foreground="?android:attr/selectableItemBackground"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_columnWeight="1"
@@ -334,7 +358,9 @@
                 android:layout_margin="12dp"
                 android:background="@color/white"
                 android:clickable="true"
-                android:focusable="true">
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:translationZ="2dp">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -358,6 +384,9 @@
 
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
+                android:foreground="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_columnWeight="1"
@@ -366,8 +395,8 @@
                 app:cardCornerRadius="12dp"
                 android:layout_margin="12dp"
                 android:background="@color/white"
-                android:clickable="true"
-                android:focusable="true">
+                android:focusableInTouchMode="true"
+                android:translationZ="2dp">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

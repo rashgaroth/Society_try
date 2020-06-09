@@ -1,4 +1,4 @@
-package com.example.society_try;
+package com.example.controller;
 
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
