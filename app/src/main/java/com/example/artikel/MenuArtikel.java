@@ -1,14 +1,15 @@
 package com.example.artikel;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.icu.text.SimpleDateFormat;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -24,6 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -31,9 +33,13 @@ import androidx.core.content.FileProvider;
 
 import com.afollestad.materialdialogs.BuildConfig;
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.example.activity.LoginActivity;
 import com.example.apihelper.BaseApiServer;
 import com.example.apihelper.RetrofitClient;
-import com.example.model.Image;
+import com.example.model.Artikel;
+import com.example.model.IdUser;
+import com.example.model.User;
+import com.example.society_try.MainMenu;
 import com.example.society_try.R;
 
 import java.io.ByteArrayOutputStream;
@@ -42,8 +48,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.lang.ref.WeakReference;
 import java.util.Date;
+import java.util.List;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -52,24 +58,25 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MenuArtikel extends AppCompatActivity implements EditorView, View.OnClickListener {
+public class MenuArtikel extends AppCompatActivity implements View.OnClickListener {
     EditText judul, deskripsi;
     ImageView imageView;
     Button upload, cameras;
     ProgressDialog progressDialog;
-    EditorPresenter editorPresenter;
     File mPhotoFile;
     OutputStream outputStream;
     Bitmap bitmapUpload;
     ProgressBar progressBar;
-    TextView txtProgress;
+    TextView txtProgress, namaUser, iduser;
     //init
     public static final int REQUEST_CODE_GALLERY = 002;
     private static final int CAMERA_REQUEST_CODE = 7777;
     private static final String TAG = MenuArtikel.class.getSimpleName();
     private Uri uri;
+    private boolean adaGambar = false;
+    private MainMenu mainMenu = new MainMenu();
 
-
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,10 +88,11 @@ public class MenuArtikel extends AppCompatActivity implements EditorView, View.O
         imageView = findViewById(R.id.imageuplaoded);
         progressBar = findViewById(R.id.progressBar);
         txtProgress = findViewById(R.id.progress);
+        namaUser = findViewById(R.id.nama_user);
+        iduser = findViewById(R.id.iduser);
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Please Wait ...");
-        editorPresenter = new EditorPresenter(this);
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
             upload.setEnabled(false);
@@ -95,11 +103,22 @@ public class MenuArtikel extends AppCompatActivity implements EditorView, View.O
             upload.setEnabled(true);
         }
 
+          String nama = MainMenu.nama_user();
+          String id = MainMenu.id_user();
+
+          iduser.setText(id);
+          namaUser.setText("Hi "+nama+"!");
 
         upload.setOnClickListener(this);
     }
 
-    private void addToInternal(){
+    private void hilang(){
+        judul.setText("");
+        deskripsi.setText("");
+        imageView.setVisibility(View.GONE);
+    }
+
+    public void addToInternal(){
         try {
             BitmapDrawable drawable = (BitmapDrawable) imageView.getDrawable();
             Bitmap bitmap = drawable.getBitmap();
@@ -114,7 +133,6 @@ public class MenuArtikel extends AppCompatActivity implements EditorView, View.O
                 e.printStackTrace();
             }
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100,outputStream);
-            Toast.makeText(MenuArtikel.this, "Image saved to storage", Toast.LENGTH_SHORT).show();
         }catch (Exception e){
             Toast.makeText(MenuArtikel.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
         }
@@ -132,41 +150,29 @@ public class MenuArtikel extends AppCompatActivity implements EditorView, View.O
         switch (item.getItemId()){
 
             case R.id.simpan:
+                User user = new User();
+                String author = MainMenu.nama_user();
                 String title = judul.getText().toString().trim();
                 String desc = deskripsi.getText().toString().trim();
+                String idString = "5";
+
+
                 if (title.isEmpty()){
                     judul.setError("Kolom wajib di isi");
                 }else if (desc.isEmpty()){
                     deskripsi.setError("Kolom Wajib di isi");
                 }else{
-                    editorPresenter.save(title, desc);
-                    uploadFile(bitmapUpload);
+                    if (adaGambar){
+                        uploadFile(title, desc, author, bitmapUpload, idString);
+                    }else{
+                        Toast.makeText(this, "Tidak ada gambar yang diupload", Toast.LENGTH_SHORT).show();
+                        uploadFile(title, desc, author, bitmapUpload, idString);
+                    }
                 }
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }
-
-    @Override
-    public void showProgress() {
-        progressDialog.show();
-    }
-
-    @Override
-    public void hideProgress() {
-        progressDialog.dismiss();
-    }
-
-    @Override
-    public void onAddSuccess(String message) {
-        Toast.makeText(MenuArtikel.this, "Berhasil ditambahkan!", Toast.LENGTH_SHORT).show();
-        finish();
-    }
-
-    @Override
-    public void onAddError(String message) {
-        Toast.makeText(MenuArtikel.this, message, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -203,7 +209,8 @@ public class MenuArtikel extends AppCompatActivity implements EditorView, View.O
             try {
                 bitmapUpload = (Bitmap) data.getExtras().get("data");
                 imageView.setImageBitmap(bitmapUpload);
-                startAsynctask();
+                imageView.setVisibility(View.VISIBLE);
+                adaGambar = true;
             }catch (Exception e){
                 Toast.makeText(MenuArtikel.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                    }
@@ -213,7 +220,8 @@ public class MenuArtikel extends AppCompatActivity implements EditorView, View.O
                 Uri path = data.getData();
                 bitmapUpload = MediaStore.Images.Media.getBitmap(getContentResolver(), path);
                 imageView.setImageBitmap(bitmapUpload);
-                startAsynctask();
+                imageView.setVisibility(View.VISIBLE);
+                adaGambar = true;
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -252,29 +260,74 @@ public class MenuArtikel extends AppCompatActivity implements EditorView, View.O
         }
     }
 
-    void uploadFile(Bitmap gambar){
-        File file = createTempFile(gambar);
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(false);
+        builder.setMessage("Batalkan?");
+        builder.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                startActivity(new Intent(MenuArtikel.this, LoginActivity.class));
+            }
+        });
+        builder.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //if user select "No", just cancel this dialog and continue with app
+                dialog.cancel();
+            }
+        });
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
 
-        RequestBody requestBody = RequestBody.create(MediaType.parse("*/*"), file);
-        MultipartBody.Part body = MultipartBody.Part.createFormData("file", file.getName(), requestBody);
-        BaseApiServer baseApiServer = RetrofitClient.getApiClient().create(BaseApiServer.class);
-        Call<Image> call = baseApiServer.sendImage(body);
-        addToInternal();
-        try {
-            call.enqueue(new Callback<Image>() {
-                @Override
-                public void onResponse(Call<Image> call, Response<Image> response) {
-                    Toast.makeText(MenuArtikel.this, "Sukses" + response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                }
+    void uploadFile(final String judul, final String deskripsi, final String author, Bitmap gambar, String id){
+         try{
+             String title = judul;
+             String desc = deskripsi;
+             String auth = author;
+             String user_id = id;
 
-                @Override
-                public void onFailure(Call<Image> call, Throwable t) {
-                    Toast.makeText(MenuArtikel.this, "error | " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-                }
-            });
-        }catch (Exception e){
-            Toast.makeText(this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-        }
+             File file = createTempFile(gambar);
+
+             RequestBody utama = RequestBody.create(MediaType.parse("text/plain"), title);
+             RequestBody isi = RequestBody.create(MediaType.parse("text/plain"), desc);
+             RequestBody nama = RequestBody.create(MediaType.parse("text/plain"), auth);
+             RequestBody id_user = RequestBody.create(MediaType.parse("text/plain"), user_id);
+             RequestBody requestBody = RequestBody.create(MediaType.parse("*/*"), file);
+             MultipartBody.Part body = MultipartBody.Part.createFormData("file", file.getName(), requestBody);
+
+            addToInternal();
+
+             BaseApiServer baseApiServer = RetrofitClient.getApiClient().create(BaseApiServer.class);
+             Call<Artikel> artikelCall = baseApiServer.save(utama, isi, nama, body, id_user);
+
+             artikelCall.enqueue(new Callback<Artikel>() {
+                 @Override
+                 public void onResponse(@NonNull Call<Artikel> call, @NonNull Response<Artikel> response) {
+
+                     if (response.isSuccessful() && response.body() != null){
+                         boolean success = true;
+                         if (success){
+                             hilang();
+                             Toast.makeText(getBaseContext(), "Artikel berhasil diupload!", Toast.LENGTH_SHORT).show();
+                             Intent intent = new Intent(MenuArtikel.this, MainMenu.class);
+                             startActivity(intent);
+                         }else {
+                             Toast.makeText(getBaseContext(), "Artikel tidak berhasil diupload", Toast.LENGTH_SHORT).show();
+                         }
+                     }
+                 }
+
+                 @Override
+                 public void onFailure(@NonNull Call<Artikel> call,@NonNull Throwable t) {
+                     Toast.makeText(getBaseContext(), t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                 }
+             });
+         }catch (Exception e){
+             Toast.makeText(getBaseContext(), e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+         }
 
     }
 
@@ -287,7 +340,7 @@ public class MenuArtikel extends AppCompatActivity implements EditorView, View.O
         return mFile;
     }
 
-    private File createTempFile(Bitmap bitmap) {
+    public File createTempFile(Bitmap bitmap) {
         File file = new File(getExternalFilesDir(Environment.DIRECTORY_PICTURES)
                 , "SOCIETY_" + System.currentTimeMillis() +"_image.jpeg");
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
@@ -307,64 +360,21 @@ public class MenuArtikel extends AppCompatActivity implements EditorView, View.O
         return file;
     }
 
-    private void startAsynctask(){
+    private void getIdUser(String username){
 
-    LoadingGambar load = new LoadingGambar(this);
-    load.execute(3);
-
-    }
-
-    private static class LoadingGambar extends AsyncTask<Integer, Integer, String> {
-        private WeakReference<MenuArtikel> weakReference;
-
-        LoadingGambar(MenuArtikel activity){
-            weakReference = new WeakReference<MenuArtikel>(activity);
-        }
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-
-            MenuArtikel mainMenu = weakReference.get();
-            if (mainMenu == null || mainMenu.isFinishing()){
-                return;
+        BaseApiServer baseApiServer = RetrofitClient.getApiClient().create(BaseApiServer.class);
+        Call<List<IdUser>> call = baseApiServer.getIdUser(username);
+        call.enqueue(new Callback<List<IdUser>>() {
+            @Override
+            public void onResponse(Call<List<IdUser>> call, Response<List<IdUser>> response) {
+                    iduser.setText("Berhasil");
             }
-            mainMenu.progressBar.setVisibility(View.VISIBLE);
-        }
 
-        @Override
-        protected String doInBackground(Integer... integers) {
-            for (int i = 0; i<integers[0]; i++){
-                publishProgress((i *100) / integers[0]);
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+            @Override
+            public void onFailure(Call<List<IdUser>> call, Throwable t) {
+                    iduser.setText("No ID here!");
             }
-            return "Gambar siap diupload!";
-        }
+        });
 
-        @Override
-        protected void onProgressUpdate(Integer... values) {
-            MenuArtikel mainMenu = weakReference.get();
-            if (mainMenu == null || mainMenu.isFinishing()){
-                return;
-            }
-            mainMenu.progressBar.setProgress(values[0]);
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-            MenuArtikel mainMenu = weakReference.get();
-            if (mainMenu == null || mainMenu.isFinishing()){
-                return;
-            }
-            super.onPostExecute(s);
-            Toast.makeText(mainMenu, s, Toast.LENGTH_SHORT).show();
-            mainMenu.imageView.setVisibility(View.VISIBLE);
-            mainMenu.progressBar.setProgress(0);
-            mainMenu.progressBar.setVisibility(View.INVISIBLE);
-        }
     }
 }

@@ -31,32 +31,35 @@
                 android:text="USER"
                 android:layout_marginTop="6dp"
                 android:textColor="@color/black_feel"
-                android:textSize="15dp" />
-
-            <TextView
-                android:id="@+id/place"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:fontFamily="@font/roboto_bold"
-                android:layout_marginTop="20dp"
-                android:text="BANDUNG"
-                android:textSize="10dp"
-                android:textColor="@color/black_feel"
+                android:textSize="15dp"
+                android:visibility="gone"
                 />
 
             <TextView
+                android:id="@+id/society"
                 android:layout_width="95dp"
                 android:layout_height="33dp"
-                android:layout_marginStart="120dp"
-                android:layout_marginLeft="150dp"
-                android:layout_marginEnd="82dp"
-                android:layout_marginRight="150dp"
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="248dp"
                 android:layout_toStartOf="@+id/foto_profil"
                 android:layout_toEndOf="@+id/user_name"
                 android:fontFamily="@font/sweetpurple"
                 android:text="SOCIETY"
                 android:textColor="@color/black_feel"
+                android:textSize="30dp" />
+
+            <TextView
+                android:id="@+id/iid"
+                android:layout_width="95dp"
+                android:layout_height="33dp"
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="40dp"
+                android:layout_toStartOf="@+id/foto_profil"
+                android:layout_toEndOf="@+id/user_name"
+                android:fontFamily="@font/sweetpurple"
+                android:text="1"
+                android:textColor="@color/black_feel"
+                android:visibility="gone"
                 android:textSize="30dp" />
 
             <de.hdodenhof.circleimageview.CircleImageView
@@ -78,6 +81,14 @@
         android:layout_height="match_parent"
         android:layout_above="@id/bottomNavigationView"
         android:layout_marginTop="40dp">
+
+        <TextView
+            android:id="@+id/emailUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dwiyan"
+            android:visibility="gone"
+            />
     </FrameLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

@@ -52,6 +52,7 @@ public class HomeFragment extends Fragment implements MainView {
                         mainPresenter.getData();
                     }
                 });
+
         ListAdapter.ItemClickListener itemClickListener = new ListAdapter.ItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
@@ -59,6 +60,7 @@ public class HomeFragment extends Fragment implements MainView {
                 Toast.makeText(getActivity(), judul, Toast.LENGTH_SHORT).show();
             }
         };
+
         return v;
     }
 

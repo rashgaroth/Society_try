@@ -1,19 +1,19 @@
 package com.example.fragment.recycleview;
 
 import android.content.Context;
-import android.transition.AutoTransition;
-import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.model.Artikel;
 import com.example.society_try.R;
 
@@ -38,30 +38,11 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder
     @Override
     public ListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_recycler, parent, false);
-        tampil = view.findViewById(R.id.expand);
         cardView = view.findViewById(R.id.card_desc);
         tampil_less = view.findViewById(R.id.expand_less);
         buka = view.findViewById(R.id.tv_item_name);
         foto = view.findViewById(R.id.img_item_photo);
 
-        tampil.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-        tampil_less.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (cardView.getVisibility()==View.VISIBLE){
-                    TransitionManager.beginDelayedTransition(cardView, new AutoTransition());
-                    cardView.setVisibility(View.GONE);
-                    tampil_less.setVisibility(View.GONE);
-                    tampil.setVisibility(View.VISIBLE);
-                }
-            }
-        });
         return new ListViewHolder(view, itemClickListener);
     }
 
@@ -74,6 +55,8 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder
         holder.suka.setText(artikels.getSuka());
         Glide.with(context)
                 .load(artikels.getGambar())
+                .crossFade()
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(foto);
     }
 
@@ -106,17 +89,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder
 
         @Override
         public void onClick(View v) {
-            if (cardView.getVisibility()==View.GONE){
-                TransitionManager.beginDelayedTransition(cardView, new AutoTransition());
-                cardView.setVisibility(View.VISIBLE);
-                tampil_less.setVisibility(View.VISIBLE);
-                tampil.setVisibility(View.GONE);
-            }else{
-                TransitionManager.beginDelayedTransition(cardView, new AutoTransition());
-                cardView.setVisibility(View.GONE);
-                tampil.setVisibility(View.VISIBLE);
-                tampil_less.setVisibility(View.GONE);
-            }
+            Toast.makeText(context, judul.getText(), Toast.LENGTH_SHORT).show();
         }
     }
     public interface ItemClickListener {

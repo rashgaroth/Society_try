@@ -9,7 +9,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
     private static Connect con = new Connect();
-    private static final String BASE_URL = "http://192.168.43.63/society_php/";
     private static Retrofit retrofit;
 
     public static Retrofit getApiClient(){

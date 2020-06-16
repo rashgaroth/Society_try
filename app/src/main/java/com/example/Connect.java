@@ -1,9 +1,9 @@
 package com.example;
 
 public class Connect {
-    public static String IP_CONNECT = "http://192.168.43.63/society_php/";
-    public static String REGIST_CONNECT = "http://192.168.43.63/society_php/register.php";
-    public static String LOGIN_CONNECT = "http://192.168.43.63/society_php/login.php";
+    public static String IP_CONNECT = "http://192.168.1.113/society_php/";
+    public static String REGIST_CONNECT = "http://192.168.1.113/society_php/register.php";
+    public static String LOGIN_CONNECT = "http://192.168.1.113/society_php/login.php";
     public String connectAPI(){
         return IP_CONNECT;
     }

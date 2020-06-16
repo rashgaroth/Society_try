@@ -9,13 +9,28 @@
     tools:context="com.example.artikel.MenuArtikel">
 
     <TextView
+        android:id="@+id/iduser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="dwiyan"
+        />
+
+    <TextView
+        android:id="@+id/nama_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hi DWIYAN"
+        android:gravity="center"
+        android:layout_marginTop="50dp"
+        android:textSize="30dp"
+        />
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="LET'S CREATE YOUR IDEA!"
         android:fontFamily="@font/roboto_bold"
         android:textSize="30dp"
         android:layout_gravity="center"
-        android:layout_marginTop="30dp"
         />
     <View
         android:layout_width="190dp"

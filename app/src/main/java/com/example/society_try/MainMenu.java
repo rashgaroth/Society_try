@@ -27,7 +27,8 @@ import java.util.List;
 
 public class MainMenu extends AppCompatActivity implements UserView{
     FrameLayout frameLayout;
-    TextView user;
+    public static TextView user, emailUser;
+    public static TextView society;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,12 +37,13 @@ public class MainMenu extends AppCompatActivity implements UserView{
         bottomnav.setOnNavigationItemSelectedListener(navListener);
         frameLayout = (FrameLayout) findViewById(R.id.fragment_layout);
         user = findViewById(R.id.user_name);
+        emailUser = findViewById(R.id.emailUser);
+        society = findViewById(R.id.iid);
 
         if (getIntent().getExtras() != null){
             Bundle bundle = getIntent().getExtras();
             user.setText(bundle.getString("Data_User"));
         }
-
 
         UserPresenter userPresenter = new UserPresenter(this);
         userPresenter.getDataUser(user.getText().toString());
@@ -56,6 +58,19 @@ public class MainMenu extends AppCompatActivity implements UserView{
         });
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout, new LoveFragment()).commit();
     }
+    public static String nama_user(){
+        String nama = user.getText().toString();
+
+
+        return nama;
+    }
+
+    public static String id_user(){
+        String idUser = society.getText().toString();
+
+        return idUser;
+    }
+
     private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -73,7 +88,7 @@ public class MainMenu extends AppCompatActivity implements UserView{
                     break;
             }
             FragmentManager fm = getSupportFragmentManager();
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout, selectedFragment).commit();
+            fm.beginTransaction().replace(R.id.fragment_layout, selectedFragment).commit();
             return true;
         }
     };
@@ -103,7 +118,9 @@ public class MainMenu extends AppCompatActivity implements UserView{
     @Override
     public void onGetResult(List<User> users) {
         for (int i = 0; i < users.size(); i++){
+            String cobaId = String.valueOf(users.get(i).getId());
             user.setText(users.get(i).getNama_depan());
+            society.setText(cobaId);
         }
     }
 

@@ -12,32 +12,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginLeft="35dp"
         >
-        <GridLayout
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:columnCount="1"
-            android:rowCount="1"
-            android:alignmentMode="alignMargins"
-            android:columnOrderPreserved="false"
-            >
+            android:layout_height="wrap_content">
 
-            <androidx.cardview.widget.CardView
-                android:foreground="?android:attr/selectableItemBackground"
+            <androidx.viewpager.widget.ViewPager
+                app:cardCornerRadius="18dp"
+                android:layout_marginTop="100dp"
+                android:id="@+id/view_pager"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_rowWeight="1"
-                android:layout_columnWeight="1"
-                app:cardElevation="6dp"
-                app:cardCornerRadius="19dp"
-                android:layout_margin="12dp"
-                app:cardBackgroundColor="@color/login_button3"
-                android:clickable="true"
-                >
-            </androidx.cardview.widget.CardView>
+                android:layout_height="210dp"
+                android:layout_alignParentTop="true"
+                android:clipToPadding="false"
+                android:layout_alignParentBottom="true"
+                android:foregroundGravity="center"
+                android:overScrollMode="never" />
+        </RelativeLayout>
 
-        </GridLayout>
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -57,10 +50,7 @@
                 app:cardCornerRadius="12dp"
                 android:layout_margin="12dp"
                 android:background="@color/white"
-                android:clickable="true"
                 android:id="@+id/forums"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
                 android:translationZ="2dp"
                 >
                 <LinearLayout
@@ -96,10 +86,7 @@
                 app:cardCornerRadius="12dp"
                 android:layout_margin="12dp"
                 android:background="@color/white"
-                android:clickable="true"
-                android:focusable="true"
                 android:id="@+id/community"
-                android:focusableInTouchMode="true"
                 android:translationZ="2dp">
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -134,10 +121,7 @@
                 app:cardCornerRadius="12dp"
                 android:layout_margin="12dp"
                 android:background="@color/white"
-                android:clickable="true"
-                android:focusable="true"
                 android:id="@+id/find"
-                android:focusableInTouchMode="true"
                 android:translationZ="2dp">
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -171,10 +155,7 @@
                 app:cardCornerRadius="12dp"
                 android:layout_margin="12dp"
                 android:background="@color/white"
-                android:clickable="true"
-                android:focusable="true"
                 android:id="@+id/article"
-                android:focusableInTouchMode="true"
                 android:translationZ="2dp">
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -209,10 +190,7 @@
                 app:cardCornerRadius="12dp"
                 android:layout_margin="12dp"
                 android:background="@color/white"
-                android:clickable="true"
-                android:focusable="true"
                 android:id="@+id/chat"
-                android:focusableInTouchMode="true"
                 android:translationZ="2dp">
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -246,10 +224,7 @@
                 app:cardCornerRadius="12dp"
                 android:layout_margin="12dp"
                 android:background="@color/white"
-                android:clickable="true"
-                android:focusable="true"
                 android:id="@+id/schedule"
-                android:focusableInTouchMode="true"
                 android:translationZ="2dp">
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -284,10 +259,7 @@
                 app:cardCornerRadius="12dp"
                 android:layout_margin="12dp"
                 android:background="@color/white"
-                android:clickable="true"
-                android:focusable="true"
                 android:id="@+id/achievement"
-                android:focusableInTouchMode="true"
                 android:translationZ="2dp">
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -320,10 +292,7 @@
                 app:cardCornerRadius="12dp"
                 android:layout_margin="12dp"
                 android:background="@color/white"
-                android:clickable="true"
-                android:focusable="true"
                 android:id="@+id/create"
-                android:focusableInTouchMode="true"
                 android:translationZ="2dp">
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -357,9 +326,6 @@
                 app:cardCornerRadius="12dp"
                 android:layout_margin="12dp"
                 android:background="@color/white"
-                android:clickable="true"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
                 android:translationZ="2dp">
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -386,7 +352,6 @@
             <androidx.cardview.widget.CardView
                 android:foreground="?android:attr/selectableItemBackground"
                 android:clickable="true"
-                android:focusable="true"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_columnWeight="1"
@@ -395,7 +360,6 @@
                 app:cardCornerRadius="12dp"
                 android:layout_margin="12dp"
                 android:background="@color/white"
-                android:focusableInTouchMode="true"
                 android:translationZ="2dp">
                 <LinearLayout
                     android:layout_width="match_parent"

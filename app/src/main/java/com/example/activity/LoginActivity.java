@@ -66,17 +66,6 @@ public class LoginActivity extends AppCompatActivity {
         ad.setExitFadeDuration(2000);
         ad.start();
 
-//        cekPw.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if(cekPw.isChecked()){
-//                    password2.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-//                }else{
-//                    password2.setTransformationMethod(PasswordTransformationMethod.getInstance());
-//                }
-//            }
-//        });
-
         findViewById(R.id.login).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
