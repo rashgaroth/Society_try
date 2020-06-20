@@ -318,6 +318,7 @@
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
                 android:foreground="?android:attr/selectableItemBackground"
+                android:id="@+id/settings"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_columnWeight="1"

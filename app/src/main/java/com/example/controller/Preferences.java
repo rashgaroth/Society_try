@@ -6,9 +6,9 @@ import android.content.Context;
 
 public class Preferences {
     //Deklarasi key-value
-    static final String KEY_USER_TEREGISTER = "user", KEY_PASS_TEREGISTER = "pass";
-    static final String KEY_USERNAME_SEDANG_LOGIN = "User_Logged_in";
-    static final String KEY_STATUS_SEDANG_LOGIN = "Status_Logged_in";
+    private static final String KEY_USER_TEREGISTER = "user", KEY_PASS_TEREGISTER = "pass";
+    private static final String KEY_USERNAME_SEDANG_LOGIN = "User_Logged_in";
+    private static final String KEY_STATUS_SEDANG_LOGIN = "Status_Logged_in";
 
     private static SharedPreferences getSharedPreferences (Context context){
         return PreferenceManager.getDefaultSharedPreferences(context);
@@ -58,6 +58,9 @@ public class Preferences {
         SharedPreferences.Editor editor = getSharedPreferences(context).edit();
         editor.remove(KEY_USERNAME_SEDANG_LOGIN);
         editor.remove(KEY_STATUS_SEDANG_LOGIN);
+        editor.remove(getLoggedInUser(context));
+        editor.clear();
         editor.apply();
+        editor.commit();
     }
 }

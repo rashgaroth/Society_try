@@ -10,11 +10,12 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_INTERNAL_STORAGE" />
+
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
     <uses-feature android:name="android.hardware.camera.flash" />
-    <uses-permission android:name="android.permission.CAMERA"/>
 
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -23,27 +24,38 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:usesCleartextTraffic="true">
+
         <provider
-            tools:replace="android:authorities"
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider"
             android:exported="false"
             android:grantUriPermissions="true"
-            >
+            tools:replace="android:authorities">
             <meta-data
-                tools:replace="android:resource"
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_provider_paths"/>
+                android:resource="@xml/file_provider_paths"
+                tools:replace="android:resource" />
         </provider>
-        <activity android:name="com.example.artikel.MenuArtikel"
-            android:theme="@style/Theme.AppCompat.Light"
+
+        <activity
+            android:name="com.example.artikel.MenuArtikel"
             android:label="New Article"
-            android:launchMode="singleTask"/>
+            android:launchMode="singleTask"
+            android:theme="@style/Theme.AppCompat.Light" />
         <activity
             android:name="com.example.activity.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name="com.example.onclick.ArtikelSelected"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity
             android:name=".MainMenu"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity
+            android:name="com.example.settings.SettingActivity"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity
+            android:name="com.example.community.ListKomunitas"
             android:theme="@style/Theme.Design.Light.NoActionBar" />
         <activity
             android:name="com.example.activity.ActivityRegister"

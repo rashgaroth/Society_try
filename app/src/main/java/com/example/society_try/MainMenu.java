@@ -15,7 +15,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-import com.example.activity.LoginActivity;
 import com.example.controller.Preferences;
 import com.example.fragment.HomeFragment;
 import com.example.fragment.LoveFragment;
@@ -33,17 +32,14 @@ public class MainMenu extends AppCompatActivity implements UserView{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
-        BottomNavigationView bottomnav = findViewById(R.id.bottomNavigationView);
+        final BottomNavigationView bottomnav = findViewById(R.id.bottomNavigationView);
         bottomnav.setOnNavigationItemSelectedListener(navListener);
         frameLayout = (FrameLayout) findViewById(R.id.fragment_layout);
         user = findViewById(R.id.user_name);
         emailUser = findViewById(R.id.emailUser);
         society = findViewById(R.id.iid);
 
-        if (getIntent().getExtras() != null){
-            Bundle bundle = getIntent().getExtras();
-            user.setText(bundle.getString("Data_User"));
-        }
+        user.setText(Preferences.getLoggedInUser(getBaseContext()));
 
         UserPresenter userPresenter = new UserPresenter(this);
         userPresenter.getDataUser(user.getText().toString());
@@ -51,9 +47,7 @@ public class MainMenu extends AppCompatActivity implements UserView{
         findViewById(R.id.foto_profil).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Preferences.clearLoggedInUser(getBaseContext());
-                startActivity(new Intent(MainMenu.this, LoginActivity.class));
-                finish();
+
             }
         });
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout, new LoveFragment()).commit();

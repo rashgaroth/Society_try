@@ -1,7 +1,6 @@
 package com.example.activity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.text.Editable;
@@ -9,13 +8,19 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.transition.Fade;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -37,17 +42,19 @@ import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
     public EditText email, password2;
+    Button pupop_button;
     ProgressBar loading;
     CheckBox cekPw;
     ScrollView nestedScrollView;
     AnimationDrawable ad;
-    private static String URL_LOGIN = "http://192.168.43.63/society_php/login.php";
+    RelativeLayout popup;
+    Animation login, bottom_to_top;
+    LinearLayout form_login;
 
     private static final String TAG = LoginActivity.class.getSimpleName();
 
     Connect con = new Connect();
 
-    SharedPreferences pref;
     Preferences preferences;
 
     @Override
@@ -56,15 +63,15 @@ public class LoginActivity extends AppCompatActivity {
         preferences = new Preferences();
 
         setContentView(R.layout.activity_login);
-        email =findViewById(R.id.email);
+        popup = findViewById(R.id.popup);
+        email = findViewById(R.id.email);
         nestedScrollView = findViewById(R.id.nsv);
         password2 =findViewById(R.id.password);
         loading = findViewById(R.id.loading);
+        form_login = findViewById(R.id.form_login);
 
-        ad = (AnimationDrawable) nestedScrollView.getBackground();
-        ad.setEnterFadeDuration(1000);
-        ad.setExitFadeDuration(2000);
-        ad.start();
+        bottom_to_top = AnimationUtils.loadAnimation(this, R.anim.bottom_totop);
+        login = AnimationUtils.loadAnimation(this, R.anim.login_popup);
 
         findViewById(R.id.login).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,6 +86,8 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+
+        animPopup();
 
         findViewById(R.id.register).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -147,7 +156,9 @@ public class LoginActivity extends AppCompatActivity {
 
                     //cek error JSON
                     if (success.equals("1")){
-                        Preferences.setLoggedInUser(getBaseContext(), Preferences.getRegisteredUser(getBaseContext()));
+                        Preferences.setRegisteredUser(getBaseContext(), username);
+                        Preferences.setLoggedInUser(getBaseContext(), username);
+                        Preferences.setRegisteredPass(getBaseContext(), password);
                         Preferences.setLoggedInStatus(getBaseContext(),true);
                         Intent intent = new Intent(LoginActivity.this, MainMenu.class);
                         Bundle bundle = new Bundle();
@@ -187,5 +198,14 @@ public class LoginActivity extends AppCompatActivity {
         requestQueue.add(strReq);
 
 
+    }
+    private void animPopup(){
+        Fade fade = new Fade();
+        fade.excludeTarget(android.R.id.statusBarBackground, true);
+        fade.excludeTarget(android.R.id.background, true);
+        getWindow();
+
+        // Run Animasi
+        popup.startAnimation(bottom_to_top);
     }
 }

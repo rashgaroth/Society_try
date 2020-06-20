@@ -37,8 +37,6 @@ import com.example.activity.LoginActivity;
 import com.example.apihelper.BaseApiServer;
 import com.example.apihelper.RetrofitClient;
 import com.example.model.Artikel;
-import com.example.model.IdUser;
-import com.example.model.User;
 import com.example.society_try.MainMenu;
 import com.example.society_try.R;
 
@@ -49,7 +47,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Date;
-import java.util.List;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -74,7 +71,6 @@ public class MenuArtikel extends AppCompatActivity implements View.OnClickListen
     private static final String TAG = MenuArtikel.class.getSimpleName();
     private Uri uri;
     private boolean adaGambar = false;
-    private MainMenu mainMenu = new MainMenu();
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -150,7 +146,6 @@ public class MenuArtikel extends AppCompatActivity implements View.OnClickListen
         switch (item.getItemId()){
 
             case R.id.simpan:
-                User user = new User();
                 String author = MainMenu.nama_user();
                 String title = judul.getText().toString().trim();
                 String desc = deskripsi.getText().toString().trim();
@@ -194,6 +189,7 @@ public class MenuArtikel extends AppCompatActivity implements View.OnClickListen
                                         setRequestCamera();
                                         break;
                                     case 2:
+                                        imageView.setImageResource(R.drawable.noimage);
                                         imageView.setVisibility(View.GONE);
                                         break;
                                 }
@@ -358,23 +354,5 @@ public class MenuArtikel extends AppCompatActivity implements View.OnClickListen
             e.printStackTrace();
         }
         return file;
-    }
-
-    private void getIdUser(String username){
-
-        BaseApiServer baseApiServer = RetrofitClient.getApiClient().create(BaseApiServer.class);
-        Call<List<IdUser>> call = baseApiServer.getIdUser(username);
-        call.enqueue(new Callback<List<IdUser>>() {
-            @Override
-            public void onResponse(Call<List<IdUser>> call, Response<List<IdUser>> response) {
-                    iduser.setText("Berhasil");
-            }
-
-            @Override
-            public void onFailure(Call<List<IdUser>> call, Throwable t) {
-                    iduser.setText("No ID here!");
-            }
-        });
-
     }
 }

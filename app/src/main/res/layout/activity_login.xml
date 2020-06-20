@@ -6,9 +6,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bgapp_list">
+    android:background="@drawable/login_image">
 
     <LinearLayout
+        android:id="@+id/form_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -21,7 +22,13 @@
             android:textSize="50dp"
             android:layout_gravity="center"
             android:layout_marginTop="90dp"
-            android:textColor="@color/black_feel"
+            android:textColor="@color/white"
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/logo_putih"
+            android:layout_marginStart="170dp"
             />
         <ProgressBar
             android:id="@+id/loading"
@@ -32,8 +39,9 @@
             android:visibility="gone"
             />
         <RelativeLayout
+            android:id="@+id/popup"
             android:layout_width="340dp"
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="0dp"
             android:layout_height="320dp"
             android:layout_marginLeft="40dp"
             android:background="@drawable/rounded"
@@ -45,11 +53,13 @@
                 android:layout_height="wrap_content"
                 android:text="LOGIN"
                 android:textSize="30dp"
+                android:textColor="@color/white"
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="130dp"
                 android:fontFamily="@font/roboto_bold"
                 />
             <TextView
+                android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/email2"
@@ -78,6 +88,7 @@
                 android:fontFamily="@font/roboto_bold"
                 android:layout_marginTop="170dp"
                 android:layout_marginLeft="10dp"
+                android:textColor="@color/white"
                 />
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -115,16 +126,18 @@
             android:textSize="22sp"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
+            android:textColor="@color/white"
             />
         <TextView
             android:id="@+id/register"
+            android:fontFamily="@font/roboto_bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/create_account"
             android:textSize="22sp"
             android:layout_marginBottom="10sp"
             android:layout_gravity="center"
-            android:textColor="@color/link"
+            android:textColor="@color/login_button3"
             />
     </LinearLayout>
 </ScrollView>

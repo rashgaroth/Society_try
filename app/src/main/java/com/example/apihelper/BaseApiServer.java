@@ -3,6 +3,7 @@ package com.example.apihelper;
 import com.example.model.Artikel;
 import com.example.model.IdUser;
 import com.example.model.Image;
+import com.example.model.Komunitas;
 import com.example.model.User;
 
 import java.util.List;
@@ -27,6 +28,8 @@ public interface BaseApiServer {
                               );
     @GET("read.php")
     Call<List<Artikel>> getArtikel();
+    @GET("get_read_community.php")
+    Call<List<Komunitas>> getKomunitas(@Query("key") String keyword);
     @GET("user.php")
     Call<List<User>> getUser(@Query("email") String email);
     @GET("iduser.php")

@@ -30,4 +30,6 @@
     <string name="do_not_have_an_account">Do not have an Account?</string>
     <string name="upload">Uploading</string>
     <string name="select">Select</string>
+    <string name="login_shared">com.example.society_try</string>
+    <string name="search">Search</string>
 </resources>

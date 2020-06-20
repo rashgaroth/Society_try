@@ -21,7 +21,7 @@ import java.util.List;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder> {
 
-    private Context context;
+    private Context ctx;
     private List<Artikel> artikel;
     private ItemClickListener itemClickListener;
     private ImageView foto;
@@ -30,8 +30,8 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder
     private CardView cardView;
     private TextView buka;
 
-    public ListAdapter(Context context, List<Artikel> artikel) {
-        this.context = context;
+    public ListAdapter(Context ctx, List<Artikel> artikel) {
+        this.ctx = ctx;
         this.artikel = artikel;
     }
     @NonNull
@@ -53,7 +53,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder
         holder.deskripsi.setText(artikels.getDeskripsi());
         holder.author.setText(artikels.getAuthor());
         holder.suka.setText(artikels.getSuka());
-        Glide.with(context)
+        Glide.with(ctx)
                 .load(artikels.getGambar())
                 .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -65,8 +65,9 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder
         return artikel.size();
     }
 
-    class ListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class ListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
+        private Context context;
         private ImageView gambar;
         private TextView judul, deskripsi, suka, author;
         CardView card;
@@ -89,7 +90,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder
 
         @Override
         public void onClick(View v) {
-            Toast.makeText(context, judul.getText(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(ctx, judul.getText(), Toast.LENGTH_SHORT).show();
         }
     }
     public interface ItemClickListener {

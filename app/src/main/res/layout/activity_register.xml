@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/pink"
+    android:background="@drawable/register2"
     tools:context="com.example.activity.ActivityRegister">
 
 
@@ -105,7 +105,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.093"
-        app:srcCompat="@drawable/hobhub" />
+        app:srcCompat="@drawable/logo_putih" />
 
     <TextView
         android:id="@+id/textView8"

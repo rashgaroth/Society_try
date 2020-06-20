@@ -80,7 +80,7 @@
     <EditText
         android:id="@+id/deskripsi"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="240dp"
         android:inputType="textMultiLine"
         android:lines="100"
         android:scrollbars="vertical"
@@ -114,9 +114,9 @@
             android:layout_width="90dp"
             android:layout_height="90dp"
             android:layout_marginTop="20dp"
-            android:src="@drawable/ic_compose"
+            android:src="@drawable/noimage"
             android:background="@drawable/rounded"
-            android:layout_marginLeft="200sp"
+            android:layout_marginLeft="240sp"
             android:visibility="gone"
             />
     </LinearLayout>

@@ -18,6 +18,8 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.artikel.MenuArtikel;
+import com.example.community.ListKomunitas;
+import com.example.settings.SettingActivity;
 import com.example.society_try.R;
 import com.example.view_pager.Adapter;
 import com.example.view_pager.Model;
@@ -33,7 +35,7 @@ public class LoveFragment extends Fragment {
     ArgbEvaluator argbEvaluator = new ArgbEvaluator();
     Handler slideHandler = new Handler();
 
-    CardView forums, community, find, articlee, chat, schedule, achievement, create;
+    CardView forums, community, find, articlee, chat, schedule, achievement, create, settings;
     ScrollView sv;
     AnimationDrawable ad;
     View garis;
@@ -46,6 +48,8 @@ public class LoveFragment extends Fragment {
         View v =  inflater.inflate(R.layout.fragment_love, container, false);
 
         articlee = v.findViewById(R.id.article);
+        settings = v.findViewById(R.id.settings);
+        community = v.findViewById(R.id.community);
         sv = v.findViewById(R.id.scroll_layout_love);
 
         articlee.setOnClickListener(new View.OnClickListener() {
@@ -55,6 +59,19 @@ public class LoveFragment extends Fragment {
             }
         });
 
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), SettingActivity.class));
+            }
+        });
+
+        community.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), ListKomunitas.class));
+            }
+        });
         ad = (AnimationDrawable) sv.getBackground();
         ad.setEnterFadeDuration(2000);
         ad.setExitFadeDuration(4000);
@@ -62,9 +79,9 @@ public class LoveFragment extends Fragment {
 
         models = new ArrayList<>();
         models.add(new Model(R.drawable.gambar1, "Community is funny"));
-        models.add(new Model(R.drawable.gambar2, "Create your choices"));
-        models.add(new Model(R.drawable.gambar3, "Talk with friends"));
-        models.add(new Model(R.drawable.gambar4, "Create idea"));
+        models.add(new Model(R.drawable.logo_biru, "Create your choices"));
+        models.add(new Model(R.drawable.friends, "Talk with friends"));
+        models.add(new Model(R.drawable.musik, "Create idea"));
 
         adapter = new Adapter(models, getContext());
         viewPager = v.findViewById(R.id.view_pager);

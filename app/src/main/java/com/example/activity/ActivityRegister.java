@@ -119,6 +119,7 @@ public class ActivityRegister extends AppCompatActivity {
                                     startActivity(new Intent(ActivityRegister.this, LoginActivity.class));
                                 }else{
                                     cancel = true;
+                                    pDialog.dismiss();
                                     ulangi.setError("Penulisan Password harus sama");
                                     ulangi.setBackgroundResource(R.drawable.textfield_error);
                                     if (cancel){
@@ -128,6 +129,7 @@ public class ActivityRegister extends AppCompatActivity {
                                         cancel = true;
                                         ulangi.setError("Kolom wajib di isi");
                                         ulangi.setBackgroundResource(R.drawable.textfield_error);
+                                        pDialog.dismiss();
                                         if (cancel){
                                             ulangi.requestFocus();
                                         }
