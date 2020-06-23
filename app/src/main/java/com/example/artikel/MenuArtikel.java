@@ -149,7 +149,7 @@ public class MenuArtikel extends AppCompatActivity implements View.OnClickListen
                 String author = MainMenu.nama_user();
                 String title = judul.getText().toString().trim();
                 String desc = deskripsi.getText().toString().trim();
-                String idString = "5";
+                String idString = MainMenu.id_user();
 
 
                 if (title.isEmpty()){

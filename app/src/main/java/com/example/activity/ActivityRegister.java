@@ -31,7 +31,6 @@ import java.util.Map;
 public class ActivityRegister extends AppCompatActivity {
     private EditText namaDepan, namaBelakang, email_register, password_register, ulangi;
     ProgressDialog pDialog;
-    private static String URL_REGIST = "http://192.168.43.63/society_php/register.php";
     String success;
 
     @Override

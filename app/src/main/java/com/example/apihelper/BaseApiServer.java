@@ -2,8 +2,9 @@ package com.example.apihelper;
 
 import com.example.model.Artikel;
 import com.example.model.IdUser;
-import com.example.model.Image;
 import com.example.model.Komunitas;
+import com.example.model.MyArtikel;
+import com.example.model.UpdateMyArtikel;
 import com.example.model.User;
 
 import java.util.List;
@@ -28,6 +29,8 @@ public interface BaseApiServer {
                               );
     @GET("read.php")
     Call<List<Artikel>> getArtikel();
+    @GET("read_myartikel.php")
+    Call<List<MyArtikel>> getMyArtikel(@Query("id") String id);
     @GET("get_read_community.php")
     Call<List<Komunitas>> getKomunitas(@Query("key") String keyword);
     @GET("user.php")
@@ -35,8 +38,8 @@ public interface BaseApiServer {
     @GET("iduser.php")
     Call<List<IdUser>> getIdUser(@Query("nama_depan") String nama_depan);
     @Multipart
-    @POST("image_upload.php")
-    Call<Image> sendImage(
-            @Part MultipartBody.Part body
-            );
+    @POST("update.php")
+    Call<List<UpdateMyArtikel>> updatePost(@Part("id") RequestBody id,
+                                     @Part("judul") RequestBody judul,
+                                     @Part("deskripsi") RequestBody deskripsi);
 }

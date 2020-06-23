@@ -121,7 +121,7 @@
                 app:cardCornerRadius="12dp"
                 android:layout_margin="12dp"
                 android:background="@color/white"
-                android:id="@+id/find"
+                android:id="@+id/myartikel"
                 android:translationZ="2dp">
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -137,7 +137,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Find"
+                        android:text="My Article"
                         android:textSize="20dp"
                         android:fontFamily="@font/roboto_bold"
                         android:textColor="@color/black_feel"

@@ -14,6 +14,16 @@ public class Komunitas {
     @SerializedName("hobi_id") String hobiId;
     @Expose
     @SerializedName("succes") boolean Succes;
+    @Expose
+    @SerializedName("rating") String rating;
+
+    public String getRating() {
+        return rating;
+    }
+
+    public void setRating(String rating) {
+        this.rating = rating;
+    }
 
     public String getIdKomunitas() {
         return idKomunitas;

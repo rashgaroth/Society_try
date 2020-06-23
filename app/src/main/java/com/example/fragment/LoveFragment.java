@@ -19,6 +19,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.example.artikel.MenuArtikel;
 import com.example.community.ListKomunitas;
+import com.example.myartikel.MyArticle;
 import com.example.settings.SettingActivity;
 import com.example.society_try.R;
 import com.example.view_pager.Adapter;
@@ -50,6 +51,7 @@ public class LoveFragment extends Fragment {
         articlee = v.findViewById(R.id.article);
         settings = v.findViewById(R.id.settings);
         community = v.findViewById(R.id.community);
+        find = v.findViewById(R.id.myartikel);
         sv = v.findViewById(R.id.scroll_layout_love);
 
         articlee.setOnClickListener(new View.OnClickListener() {
@@ -70,6 +72,12 @@ public class LoveFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(), ListKomunitas.class));
+            }
+        });
+        find.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), MyArticle.class));
             }
         });
         ad = (AnimationDrawable) sv.getBackground();

@@ -89,31 +89,4 @@ public class ListKomunitas extends AppCompatActivity implements ListView{
     public void onErrorLoading(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
-
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        MenuInflater inflater = new MenuInflater(this);
-//        inflater.inflate(R.menu.search, menu);
-//
-//        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-//        SearchView searchView = (SearchView) menu.findItem(R.id.searching).getActionView();
-//        searchView.setSearchableInfo(
-//                searchManager.getSearchableInfo(getComponentName())
-//        );
-//        searchView.setIconifiedByDefault(false);
-//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//            @Override
-//            public boolean onQueryTextSubmit(String query) {
-//                listPresenter.getKomunitas(query);
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean onQueryTextChange(String newText) {
-//                listPresenter.getKomunitas(newText);
-//                return false;
-//            }
-//        });
-//        return true;
-//    }
 }

@@ -19,7 +19,7 @@
         >
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/card_article"
+            android:id="@+id/card_myartikel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
@@ -30,7 +30,7 @@
             app:cardElevation="20dp"
             >
             <ImageView
-                android:id="@+id/img_item_photo"
+                android:id="@+id/foto_myartikel"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 tools:src="@android:color/darker_gray" />
@@ -40,31 +40,6 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="280dp"
                 android:orientation="horizontal">
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="40dp"
-                    android:layout_height="30dp"
-                    app:cardCornerRadius="9dp"
-                    >
-
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_marginTop="8dp"
-                        android:src="@drawable/ic_love" />
-
-                    <TextView
-                        android:id="@+id/tv_love"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginTop="9dp"
-                        android:fontFamily="@font/roboto_medium"
-                        android:text="44"
-                        android:textColor="@color/pink"
-                        android:textSize="10dp"
-                        android:textStyle="bold" />
-                </androidx.cardview.widget.CardView>
                 <androidx.cardview.widget.CardView
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
@@ -79,7 +54,7 @@
                         android:src="@drawable/ic_person" />
 
                     <TextView
-                        android:id="@+id/tv_profile"
+                        android:id="@+id/profile_myartikel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -97,23 +72,21 @@
                 android:id="@+id/linear"
                 android:orientation="vertical"
                 android:layout_marginTop="310dp"
-                android:paddingBottom="40dp"
                 >
                 <TextView
-                    android:id="@+id/tv_item_name"
+                    android:id="@+id/judul_myartikel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:paddingBottom="30dp"
                     android:textSize="25sp"
                     android:textStyle="bold"
-                    tools:text="Judul"
-                    android:paddingBottom="50dp"
-                    />
+                    tools:text="Judul" />
                 <View
                     android:id="@+id/garis"
                     android:layout_width="wrap_content"
                     android:layout_height="3dp"
                     android:layout_below="@+id/linear"
-                    android:layout_marginTop="60dp"
+                    android:layout_marginTop="3dp"
                     android:background="@color/black_feel"
                     android:visibility="visible" />
                 <RelativeLayout
@@ -134,7 +107,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginTop="370dp"
+                android:layout_marginTop="390dp"
                 android:id="@+id/tampil"
                 >
                 <androidx.cardview.widget.CardView
@@ -144,13 +117,13 @@
                     >
 
                     <com.borjabravo.readmoretextview.ReadMoreTextView
-                        android:id="@+id/tv_item_detail"
+                        android:id="@+id/deskripsi_myartikel"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="50dp"
                         android:text="deskripsi"
+                        tools:layout_editor_absoluteX="0dp"
                         app:trimLines="3"
-                        app:showTrimExpandedText="false"
+                        app:showTrimExpandedText="true"
                         app:trimMode="trimModeLine"
                         app:colorClickableText="@color/black_feel"
                         app:trimLength="7"

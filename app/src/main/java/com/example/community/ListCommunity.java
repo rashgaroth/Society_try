@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -25,6 +26,7 @@ public class ListCommunity extends RecyclerView.Adapter<ListCommunity.ListViewHo
     private ImageView foto;
     private ItemClickListener itemClickListener;
     private TextView nama, alamat, rating;
+    private RatingBar ratingKomunitas;
 
     public ListCommunity(Context context, List<Komunitas> komunitasList) {
         this.context = context;
@@ -39,6 +41,7 @@ public class ListCommunity extends RecyclerView.Adapter<ListCommunity.ListViewHo
         nama = view.findViewById(R.id.judul_komunitas);
         alamat = view.findViewById(R.id.alamat);
         rating = view.findViewById(R.id.rating);
+        ratingKomunitas = view.findViewById(R.id.ratingbar);
         return new ListCommunity.ListViewHolder(view, itemClickListener);
     }
 
@@ -52,6 +55,9 @@ public class ListCommunity extends RecyclerView.Adapter<ListCommunity.ListViewHo
                 .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.gambar);
+        holder.rating.setText(komunitas.getRating());
+        holder.ratingBar.setRating(Float.parseFloat(holder.rating.getText().toString()));
+
     }
 
     @Override
@@ -61,7 +67,7 @@ public class ListCommunity extends RecyclerView.Adapter<ListCommunity.ListViewHo
 
     class ListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-        private Context context;
+        RatingBar ratingBar;
         private ImageView gambar;
         private TextView nama, alamat, rating;
         ItemClickListener itemClickListener;
@@ -74,6 +80,7 @@ public class ListCommunity extends RecyclerView.Adapter<ListCommunity.ListViewHo
             alamat = itemView.findViewById(R.id.alamat);
             rating = itemView.findViewById(R.id.rating);
             list = itemView.findViewById(R.id.list);
+            ratingBar = itemView.findViewById(R.id.ratingbar);
 
             this.itemClickListener = itemClickListener;
             list.setOnClickListener(this);

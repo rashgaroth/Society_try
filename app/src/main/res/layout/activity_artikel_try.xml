@@ -1,6 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<ScrollView
+    android:id="@+id/scroll_artikel"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white">
 
-</LinearLayout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/judul_artikel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Judul Artikel"
+            android:textSize="30dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/roboto_bold"
+            />
+        <View
+            android:id="@id/garis"
+            android:layout_width="wrap_content"
+            android:layout_height="3dp"
+            android:layout_below="@+id/linear"
+            android:layout_marginTop="3dp"
+            android:background="@color/black_feel"
+            android:visibility="visible" />
+        <ImageView
+            android:id="@+id/gambar_artikel"
+            android:layout_marginTop="30dp"
+            android:layout_width="410dp"
+            android:layout_height="200dp"
+            android:src="@drawable/beatle"
+            />
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginLeft="20dp"
+            app:cardCornerRadius="9dp"
+            >
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/ic_person" />
+
+            <TextView
+                android:id="@+id/author_artikel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="9dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Jajang"
+                android:textColor="@color/black_feel"
+                android:textSize="10dp"
+                android:textStyle="bold" />
+        </androidx.cardview.widget.CardView>
+        <View
+            android:id="@id/garis"
+            android:layout_width="wrap_content"
+            android:layout_height="3dp"
+            android:layout_below="@+id/linear"
+            android:layout_marginTop="3dp"
+            android:background="@color/black_feel"
+            android:visibility="visible" />
+        <TextView
+            android:id="@+id/deskripsi_artikel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="deskripsi artikel"
+            android:fontFamily="@font/roboto_bold"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            />
+    </LinearLayout>
+
+</ScrollView>

@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -30,9 +29,10 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder
     private CardView cardView;
     private TextView buka;
 
-    public ListAdapter(Context ctx, List<Artikel> artikel) {
+    public ListAdapter(Context ctx, List<Artikel> artikel, ItemClickListener itemClickListener) {
         this.ctx = ctx;
         this.artikel = artikel;
+        this.itemClickListener = itemClickListener;
     }
     @NonNull
     @Override
@@ -56,6 +56,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder
         Glide.with(ctx)
                 .load(artikels.getGambar())
                 .crossFade()
+                .centerCrop()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(foto);
     }
@@ -74,7 +75,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder
         ImageView foto;
         ItemClickListener itemClickListener;
 
-        public ListViewHolder(@NonNull View itemView, final ItemClickListener itemClickListener) {
+        public ListViewHolder(@NonNull View itemView, ItemClickListener itemClickListener) {
             super(itemView);
             judul = itemView.findViewById(R.id.tv_item_name);
             deskripsi = itemView.findViewById(R.id.tv_item_detail);
@@ -90,10 +91,10 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder
 
         @Override
         public void onClick(View v) {
-            Toast.makeText(ctx, judul.getText(), Toast.LENGTH_SHORT).show();
+            itemClickListener.onItemClick(getAdapterPosition());
         }
     }
     public interface ItemClickListener {
-        void onItemClick(View view, int position);
+        void onItemClick(int position);
     }
 }

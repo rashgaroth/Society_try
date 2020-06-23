@@ -50,7 +50,8 @@
         android:layout_alignParentEnd="true"
         android:layout_marginStart="140dp"
         android:text="Nama Komunitas"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        />
 
     <TextView
         android:id="@+id/alamat"
@@ -59,7 +60,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="140dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="50dp"
         android:text="Alamat Komunitas"
         android:textSize="20dp" />
 
@@ -70,26 +71,24 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="140dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="90dp"
         android:text="5"
         android:textSize="20dp" />
 
-
-    <ImageView
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/alamat"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="335dp"
-        android:layout_marginTop="35dp"
-        android:src="@drawable/star" />
-
+    <RatingBar
+        android:id="@+id/ratingbar"
+        style="@style/RatingbarCommunity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="130dp"
+        android:paddingBottom="10dp" />
     <View
         android:id="@+id/garis"
         android:layout_width="wrap_content"
         android:layout_height="3dp"
         android:layout_below="@+id/linear"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="180dp"
         android:background="@color/black_feel"
         android:visibility="visible" />
 </RelativeLayout>

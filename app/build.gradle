@@ -65,4 +65,5 @@ dependencies {
     })
     //dialog
     implementation 'com.afollestad.material-dialogs:core:0.9.4.5'
+    //imageview
 }

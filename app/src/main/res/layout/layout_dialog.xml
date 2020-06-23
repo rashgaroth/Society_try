@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Judul"
+    android:textSize="20dp"
+    android:layout_marginLeft="10dp"
+    android:fontFamily="@font/roboto_bold"
+    />
+    <EditText
+        android:id="@+id/judul_update"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="40dp"
+        android:hint="Judul"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:paddingLeft="20dp"
+        android:background="@drawable/rounded_edittext_description"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="110dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="31dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="Deskripsi"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/deskripsi_update"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:background="@drawable/rounded_edittext_description"
+        android:hint="@string/deskripsi"/>
+</RelativeLayout>

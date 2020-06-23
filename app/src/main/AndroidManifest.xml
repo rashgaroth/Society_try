@@ -43,6 +43,9 @@
             android:launchMode="singleTask"
             android:theme="@style/Theme.AppCompat.Light" />
         <activity
+            android:name="com.example.myartikel.MyArticle"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity
             android:name="com.example.activity.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
@@ -54,6 +57,11 @@
         <activity
             android:name="com.example.settings.SettingActivity"
             android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity
+            android:name="com.example.onclick.MyArtikelSelected"
+            android:label="My Article"
+            android:launchMode="singleTask"
+            android:theme="@style/Theme.AppCompat.Light"  />
         <activity
             android:name="com.example.community.ListKomunitas"
             android:theme="@style/Theme.Design.Light.NoActionBar" />

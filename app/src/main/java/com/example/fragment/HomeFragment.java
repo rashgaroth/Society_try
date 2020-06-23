@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ScrollView;
 import android.widget.Toast;
+import android.content.Intent;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,11 +19,12 @@ import com.example.fragment.recycleview.ListAdapter;
 import com.example.fragment.recycleview.MainPresenter;
 import com.example.fragment.recycleview.MainView;
 import com.example.model.Artikel;
+import com.example.onclick.ArtikelSelected;
 import com.example.society_try.R;
 
 import java.util.List;
 
-public class HomeFragment extends Fragment implements MainView {
+public class HomeFragment extends Fragment implements MainView, ListAdapter.ItemClickListener {
     ScrollView sv;
     SwipeRefreshLayout swipeRefreshLayout;
     MainPresenter mainPresenter;
@@ -53,14 +55,6 @@ public class HomeFragment extends Fragment implements MainView {
                     }
                 });
 
-        ListAdapter.ItemClickListener itemClickListener = new ListAdapter.ItemClickListener() {
-            @Override
-            public void onItemClick(View view, int position) {
-                String judul = artikel.get(position).getJudul();
-                Toast.makeText(getActivity(), judul, Toast.LENGTH_SHORT).show();
-            }
-        };
-
         return v;
     }
 
@@ -76,7 +70,7 @@ public class HomeFragment extends Fragment implements MainView {
 
     @Override
     public void onGetResult(List<Artikel> artikels) {
-        adapter = new ListAdapter(getActivity(), artikels);
+        adapter = new ListAdapter(getActivity(), artikels, this);
         adapter.notifyDataSetChanged();
         recyclerView.setAdapter(adapter);
 
@@ -86,5 +80,18 @@ public class HomeFragment extends Fragment implements MainView {
     @Override
     public void onErrorLoading(String message) {
         Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onItemClick(int position) {
+        artikel.get(position);
+        Intent intent = new Intent(getActivity(), ArtikelSelected.class);
+        intent.putExtra("judul", artikel.get(position).getJudul());
+        intent.putExtra("author", artikel.get(position).getAuthor());
+        intent.putExtra("deskripsi", artikel.get(position).getDeskripsi());
+        intent.putExtra("gambar", artikel.get(position).getGambar());
+
+
+        startActivity(intent);
     }
 }
