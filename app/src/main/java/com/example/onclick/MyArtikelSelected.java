@@ -1,5 +1,8 @@
 package com.example.onclick;
 
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -9,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
@@ -16,6 +20,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.onclick.myartikelselected.ArtikelPresenter;
 import com.example.onclick.myartikelselected.ArtikelView;
+import com.example.society_try.MainMenu;
 import com.example.society_try.R;
 
 public class MyArtikelSelected extends AppCompatActivity implements Dialog.KirimData, ArtikelView {
@@ -24,7 +29,7 @@ public class MyArtikelSelected extends AppCompatActivity implements Dialog.Kirim
     SwipeRefreshLayout refreshLayout;
     ArtikelPresenter presenter;
     Menu menu;
-    ArtikelView view;
+    Intent intent = new Intent();
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -57,9 +62,31 @@ public class MyArtikelSelected extends AppCompatActivity implements Dialog.Kirim
 
     private void updatePost() {
         presenter.updateData(id.getText().toString(), judul.getText().toString(), deskripsi.getText().toString());
+        Toast.makeText(this, "Updated!", Toast.LENGTH_SHORT).show();
     }
 
     private void hapusArtikel() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(false);
+        builder.setMessage("Hapus Artikel ?");
+        builder.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                  presenter.hapusData(id.getText().toString());
+                Intent intent = new Intent(MyArtikelSelected.this, MainMenu.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        builder.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //if user select "No", just cancel this dialog and continue with app
+                dialog.cancel();
+            }
+        });
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 
     private void updateArtikel(){
@@ -79,27 +106,6 @@ public class MyArtikelSelected extends AppCompatActivity implements Dialog.Kirim
         id = findViewById(R.id.id);
 
         presenter = new ArtikelPresenter(this);
-        view = new ArtikelView() {
-            @Override
-            public void showLoading() {
-                refreshLayout.setRefreshing(true);
-            }
-
-            @Override
-            public void hideLoading() {
-                refreshLayout.setRefreshing(false);
-            }
-
-            @Override
-            public void onSucces(String message) {
-                Toast.makeText(MyArtikelSelected.this, "Updated!", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onErrorLoading(String message) {
-                Toast.makeText(MyArtikelSelected.this, "There's problem on server!", Toast.LENGTH_SHORT).show();
-            }
-        };
         refreshLayout.setRefreshing(true);
 
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -139,21 +145,24 @@ public class MyArtikelSelected extends AppCompatActivity implements Dialog.Kirim
 
     @Override
     public void showLoading() {
-
+        ProgressDialog pd = new ProgressDialog(this);
+        pd.setMessage("Processing...");
+        pd.show();
     }
 
     @Override
     public void hideLoading() {
-        refreshLayout.setRefreshing(false);
+        ProgressDialog pd = new ProgressDialog(this);
+        pd.dismiss();
     }
 
     @Override
     public void onSucces(String message) {
-        Toast.makeText(MyArtikelSelected.this, "Updated!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(MyArtikelSelected.this, message, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onErrorLoading(String message) {
-        Toast.makeText(MyArtikelSelected.this, "There's problem on server!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(MyArtikelSelected.this, message, Toast.LENGTH_SHORT).show();
     }
 }

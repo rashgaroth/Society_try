@@ -1,8 +1,12 @@
 package com.example.society_try;
 
 import android.annotation.SuppressLint;
+import android.app.job.JobInfo;
+import android.app.job.JobScheduler;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import com.example.background.JobServices;
 import com.example.controller.Preferences;
 import com.example.fragment.HomeFragment;
 import com.example.fragment.LoveFragment;
@@ -25,6 +30,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.List;
 
 public class MainMenu extends AppCompatActivity implements UserView{
+    private static final String TAG = "MainMenu";
     FrameLayout frameLayout;
     public static TextView user, emailUser;
     public static TextView society;
@@ -43,14 +49,8 @@ public class MainMenu extends AppCompatActivity implements UserView{
 
         UserPresenter userPresenter = new UserPresenter(this);
         userPresenter.getDataUser(user.getText().toString());
-
-        findViewById(R.id.foto_profil).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout, new LoveFragment()).commit();
+
     }
     public static String nama_user(){
         String nama = user.getText().toString();
@@ -127,5 +127,28 @@ public class MainMenu extends AppCompatActivity implements UserView{
     @Override
     public void onGetSucces(String message) {
 
+    }
+
+    public void scheduleJob(View v){
+        ComponentName componentName = new ComponentName(this, JobServices.class);
+        JobInfo info = new JobInfo.Builder(123, componentName)
+                .setRequiresCharging(true)
+                .setRequiredNetworkType(JobInfo.NETWORK_TYPE_UNMETERED)
+                .setPersisted(true)
+                .setPeriodic(15 * 60 * 1000)
+                .build();
+        JobScheduler scheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
+        int resultCode = scheduler.schedule(info);
+        if (resultCode == JobScheduler.RESULT_SUCCESS){
+            Log.d(TAG, "Shceduled");
+        }else{
+            Log.d(TAG, "Shceduled failure");
+        }
+    }
+
+    public void cancleJob(View v){
+        JobScheduler scheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
+        scheduler.cancel(123);
+        Log.d(TAG, "canceled");
     }
 }

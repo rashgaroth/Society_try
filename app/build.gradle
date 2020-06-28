@@ -65,5 +65,6 @@ dependencies {
     })
     //dialog
     implementation 'com.afollestad.material-dialogs:core:0.9.4.5'
-    //imageview
+    //like button
+    implementation 'com.github.jd-alexander:LikeButton:0.2.3'
 }

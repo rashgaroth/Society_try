@@ -87,6 +87,14 @@ public class MenuArtikel extends AppCompatActivity implements View.OnClickListen
         namaUser = findViewById(R.id.nama_user);
         iduser = findViewById(R.id.iduser);
 
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogGambar dg = new DialogGambar(imageView);
+                dg.show(getSupportFragmentManager(), "View");
+            }
+        });
+
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Please Wait ...");
 
@@ -156,12 +164,15 @@ public class MenuArtikel extends AppCompatActivity implements View.OnClickListen
                     judul.setError("Kolom wajib di isi");
                 }else if (desc.isEmpty()){
                     deskripsi.setError("Kolom Wajib di isi");
-                }else{
+                }else if(title.length() > 35){
+                    judul.setError("Full of String!");
+                }
+                else{
                     if (adaGambar){
+                        progressDialog.show();
                         uploadFile(title, desc, author, bitmapUpload, idString);
                     }else{
                         Toast.makeText(this, "Tidak ada gambar yang diupload", Toast.LENGTH_SHORT).show();
-                        uploadFile(title, desc, author, bitmapUpload, idString);
                     }
                 }
                 return true;
@@ -310,8 +321,10 @@ public class MenuArtikel extends AppCompatActivity implements View.OnClickListen
                              Toast.makeText(getBaseContext(), "Artikel berhasil diupload!", Toast.LENGTH_SHORT).show();
                              Intent intent = new Intent(MenuArtikel.this, MainMenu.class);
                              startActivity(intent);
+                             progressDialog.dismiss();
                          }else {
                              Toast.makeText(getBaseContext(), "Artikel tidak berhasil diupload", Toast.LENGTH_SHORT).show();
+                             progressDialog.dismiss();
                          }
                      }
                  }

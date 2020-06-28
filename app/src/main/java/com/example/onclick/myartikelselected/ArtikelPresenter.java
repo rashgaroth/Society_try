@@ -49,4 +49,24 @@ public class ArtikelPresenter {
             }
         });
     }
+
+    public void hapusData(String id){
+        view.showLoading();
+        BaseApiServer baseApiServer = RetrofitClient.getApiClient().create(BaseApiServer.class);
+        Call<List<UpdateMyArtikel>> call = baseApiServer.hapusPost(id);
+        call.enqueue(new Callback<List<UpdateMyArtikel>>() {
+            @Override
+            public void onResponse(Call<List<UpdateMyArtikel>> call, Response<List<UpdateMyArtikel>> response) {
+                view.hideLoading();
+                view.onSucces("sukses hapus!");
+            }
+
+            @Override
+            public void onFailure(Call<List<UpdateMyArtikel>> call, Throwable t) {
+                view.hideLoading();
+                view.onErrorLoading(t.getLocalizedMessage());
+            }
+        });
+    }
+
 }

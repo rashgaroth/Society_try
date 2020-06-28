@@ -27,14 +27,11 @@ public class MainPresenter {
             @Override
             public void onResponse(Call<List<Artikel>> call, Response<List<Artikel>> response) {
                 view.hideLoading();
-                if(response.isSuccessful() && response.body() != null){
-                    view.onGetResult(response.body());
-                }
+                view.onGetResult(response.body());
             }
 
             @Override
             public void onFailure(Call<List<Artikel>> call, Throwable t) {
-                view.hideLoading();
                 view.onErrorLoading(t.getLocalizedMessage());
             }
         });

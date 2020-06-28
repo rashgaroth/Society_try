@@ -16,6 +16,16 @@ public class Komunitas {
     @SerializedName("succes") boolean Succes;
     @Expose
     @SerializedName("rating") String rating;
+    @Expose
+    @SerializedName("gambar") String gambar;
+
+    public String getGambar() {
+        return gambar;
+    }
+
+    public void setGambar(String gambar) {
+        this.gambar = gambar;
+    }
 
     public String getRating() {
         return rating;

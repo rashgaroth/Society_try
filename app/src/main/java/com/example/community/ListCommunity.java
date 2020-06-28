@@ -51,7 +51,7 @@ public class ListCommunity extends RecyclerView.Adapter<ListCommunity.ListViewHo
         holder.nama.setText(komunitas.getNamaKomunitas());
         holder.alamat.setText(komunitas.getAlamat());
         Glide.with(context)
-                .load(R.drawable.beatle)
+                .load(komunitas.getGambar())
                 .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.gambar);

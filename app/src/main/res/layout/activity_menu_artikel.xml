@@ -65,7 +65,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:background="@drawable/rounded_edittext_description"
-        android:maxLength="60"
+        android:maxLength="35"
         />
     <TextView
         android:layout_width="match_parent"

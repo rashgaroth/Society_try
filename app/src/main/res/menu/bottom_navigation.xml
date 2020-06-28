@@ -6,15 +6,15 @@
         android:id="@+id/navigation_love"
         android:enabled="true"
         app:showAsAction="ifRoom"
-        android:title="Love"
-        android:icon="@drawable/ic_love"/>
+        android:title="Menu"
+        android:icon="@drawable/menu"/>
 
     <item
         android:id="@+id/navigation_home"
         android:enabled="true"
         app:showAsAction="ifRoom"
-        android:title="Home"
-        android:icon="@drawable/ic_action_name"/>
+        android:title="Article"
+        android:icon="@drawable/article"/>
 
     <item
         android:id="@+id/navigation_profile"

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Society_try</string>
+    <string name="app_name">Society</string>
     <string name="text_email_login">Username/Email</string>
     <string name="password_login">Password</string>
     <string name="button_login">Login</string>
@@ -32,4 +32,6 @@
     <string name="login_shared">com.example.society_try</string>
     <string name="search">Search</string>
     <string name="deskripsi">Deskripsi</string>
+    <string name="tanggal">tanggal</string>
+    <string name="_2311">0</string>
 </resources>

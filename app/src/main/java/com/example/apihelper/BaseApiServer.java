@@ -1,7 +1,6 @@
 package com.example.apihelper;
 
 import com.example.model.Artikel;
-import com.example.model.IdUser;
 import com.example.model.Komunitas;
 import com.example.model.MyArtikel;
 import com.example.model.UpdateMyArtikel;
@@ -35,11 +34,11 @@ public interface BaseApiServer {
     Call<List<Komunitas>> getKomunitas(@Query("key") String keyword);
     @GET("user.php")
     Call<List<User>> getUser(@Query("email") String email);
-    @GET("iduser.php")
-    Call<List<IdUser>> getIdUser(@Query("nama_depan") String nama_depan);
     @Multipart
     @POST("update.php")
     Call<List<UpdateMyArtikel>> updatePost(@Part("id") RequestBody id,
                                      @Part("judul") RequestBody judul,
                                      @Part("deskripsi") RequestBody deskripsi);
+    @GET("hapus.php")
+    Call<List<UpdateMyArtikel>> hapusPost(@Query("id") String id);
 }

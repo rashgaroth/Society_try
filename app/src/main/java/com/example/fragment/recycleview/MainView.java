@@ -1,6 +1,7 @@
 package com.example.fragment.recycleview;
 
 import com.example.model.Artikel;
+import com.example.model.MyArtikel;
 
 import java.util.List;
 

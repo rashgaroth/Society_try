@@ -17,6 +17,7 @@
             android:id="@+id/judul_artikel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/hitam"
             android:text="Judul Artikel"
             android:textSize="30dp"
             android:layout_marginLeft="20dp"
@@ -34,7 +35,7 @@
         <ImageView
             android:id="@+id/gambar_artikel"
             android:layout_marginTop="30dp"
-            android:layout_width="410dp"
+            android:layout_width="match_parent"
             android:layout_height="200dp"
             android:src="@drawable/beatle"
             />
@@ -76,7 +77,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="deskripsi artikel"
-            android:fontFamily="@font/roboto_bold"
+            android:textColor="@color/hitam"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="20dp"
