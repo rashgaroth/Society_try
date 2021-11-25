@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 # Society Hub
 
 Project ini menggunakan 1 algoritma yaitu adalah Simple Addictive Weighting, yang mana algoritma ini akan mencari nilai yang tertinggi sesuai dengan bobot dan kriteria yang dimiliki si komunitas tersebut.
@@ -23,3 +24,9 @@ Halaman posting artikel pada aplikasi Society dan Halaman getArtikel pada aplika
 ![image](https://user-images.githubusercontent.com/50513263/88458646-b938cb00-ceb9-11ea-81ff-15ddb5e8ea67.png)
 
 Memberikan rekomendasi komunitas kepada user
+=======
+# Society_try
+ Kelompok Society-hub yang membuat aplikasi HOB-HUB untuk merekomendasikan pemuda untuk mengikuti komunitas
+ test
+ siap bang jago
+>>>>>>> Stashed changes

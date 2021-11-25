@@ -11,7 +11,7 @@
     <LinearLayout
         android:id="@+id/form_login"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         >
         <TextView
@@ -40,10 +40,10 @@
             />
         <RelativeLayout
             android:id="@+id/popup"
-            android:layout_width="340dp"
+            android:layout_width="wrap_content"
             android:layout_marginTop="0dp"
-            android:layout_height="320dp"
-            android:layout_marginLeft="40dp"
+            android:layout_height="match_parent"
+            android:layout_margin="40dp"
             android:background="@drawable/rounded"
             android:foreground="?android:attr/selectableItemBackground"
             >
@@ -113,31 +113,26 @@
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:layout_marginTop="280dp"
-                style="@style/blueButton"
+                style="@style/ClearHobbies"
                 android:text="@string/logijn2"
                 android:textColor="@color/white"
                 android:layout_marginLeft="10dp"
+                android:layout_marginBottom="20dp"
                 />
+
+            <TextView
+                android:id="@+id/register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="280dp"
+                android:layout_marginStart="75dp"
+                android:layout_marginBottom="20dp"
+                android:layout_toEndOf="@+id/login"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@string/create_account"
+                android:textColor="@color/white"
+                android:textSize="22sp" />
         </RelativeLayout>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/do_not_have_an_account"
-            android:textSize="22sp"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            android:textColor="@color/white"
-            />
-        <TextView
-            android:id="@+id/register"
-            android:fontFamily="@font/roboto_bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/create_account"
-            android:textSize="22sp"
-            android:layout_marginBottom="10sp"
-            android:layout_gravity="center"
-            android:textColor="@color/login_button3"
-            />
     </LinearLayout>
+
 </ScrollView>

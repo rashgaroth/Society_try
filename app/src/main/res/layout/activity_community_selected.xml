@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.onclick.CommunitySelected">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <ImageView
+            android:id="@+id/image_selected"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:src="@drawable/beatle"
+            />
+        <TextView
+            android:id="@+id/judul_komunitas_selected"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Judul Komunitas"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="30dp"
+            android:textColor="@color/hitam"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="10dp"
+            >
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/tempat"
+                />
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:id="@+id/tempat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tempat Komunitas"
+                android:layout_marginTop="5dp"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="10dp"
+            >
+            <RatingBar
+                android:id="@+id/rating_selected"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/RatingbarCommunity"
+
+                />
+        </LinearLayout>
+        <TextView
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/desc"
+            />
+        <Button
+            android:foreground="?android:attr/selectableItemBackground"
+            android:id="@+id/join"
+            android:layout_margin="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_width="190dp"
+            android:layout_height="30dp"
+            style="@style/Join"
+            android:text="Join the Community"
+            />
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/white"
+    app:layout_behavior="@string/bottom_sheet_behavior"
+    >
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/swipe"
+        android:layout_gravity="center"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Swipe for let us give your recommendations!"
+        android:layout_gravity="center"
+        android:textColor="@color/hitam"
+        />
+    <View
+        android:id="@+id/garis2"
+        android:layout_width="250dp"
+        android:layout_height="3dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="9dp"
+        android:background="@color/black_feel"
+        android:visibility="visible" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/alamat_tombol"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="Address"
+            style="@style/TransparentButton"
+            android:layout_margin="10dp"
+            />
+        <Button
+            android:id="@+id/rating_tombol"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="Rating"
+            style="@style/TransparentButton"
+            android:layout_margin="10dp"
+            />
+        <Button
+            android:id="@+id/people_tombol"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="PEOPLE"
+            style="@style/TransparentButton"
+            android:layout_margin="10dp"
+            />
+        <Button
+            android:id="@+id/active_tombol"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="active"
+            style="@style/TransparentButton"
+            android:layout_margin="10dp"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/nilai"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nilai : "
+        />
+
+    <Button
+        android:id="@+id/find_tombol"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/HobbiesButton"
+        android:text="Find Now!"
+        android:layout_margin="20dp"
+        />
+
+</LinearLayout>

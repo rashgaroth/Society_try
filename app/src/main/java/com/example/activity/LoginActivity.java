@@ -1,5 +1,6 @@
 package com.example.activity;
 
+import android.animation.AnimatorSet;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -50,6 +52,8 @@ public class LoginActivity extends AppCompatActivity {
     RelativeLayout popup;
     Animation login, bottom_to_top;
     LinearLayout form_login;
+    AnimatorSet animatorSet;
+    ImageView img;
 
     private static final String TAG = LoginActivity.class.getSimpleName();
 

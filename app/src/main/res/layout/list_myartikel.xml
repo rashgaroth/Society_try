@@ -116,17 +116,12 @@
                     android:id="@+id/card_desc"
                     >
 
-                    <com.borjabravo.readmoretextview.ReadMoreTextView
+                    <TextView
                         android:id="@+id/deskripsi_myartikel"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="deskripsi"
                         tools:layout_editor_absoluteX="0dp"
-                        app:trimLines="3"
-                        app:showTrimExpandedText="true"
-                        app:trimMode="trimModeLine"
-                        app:colorClickableText="@color/black_feel"
-                        app:trimLength="7"
                         />
                 </androidx.cardview.widget.CardView>
             </LinearLayout>

@@ -20,6 +20,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.example.artikel.MenuArtikel;
 import com.example.community.ListKomunitas;
 import com.example.myartikel.MyArticle;
+import com.example.selection.Hobbies;
 import com.example.settings.SettingActivity;
 import com.example.society_try.R;
 import com.example.view_pager.Adapter;
@@ -27,6 +28,8 @@ import com.example.view_pager.Model;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import maes.tech.intentanim.CustomIntent;
 
 public class LoveFragment extends Fragment {
     public static ViewPager viewPager;
@@ -36,7 +39,7 @@ public class LoveFragment extends Fragment {
     ArgbEvaluator argbEvaluator = new ArgbEvaluator();
     Handler slideHandler = new Handler();
 
-    CardView forums, community, find, articlee, chat, schedule, achievement, create, settings;
+    CardView forums, community, find, articlee, recommend, schedule, achievement, create, settings;
     ScrollView sv;
     AnimationDrawable ad;
     View garis;
@@ -53,11 +56,22 @@ public class LoveFragment extends Fragment {
         community = v.findViewById(R.id.community);
         find = v.findViewById(R.id.myartikel);
         sv = v.findViewById(R.id.scroll_layout_love);
+        recommend = v.findViewById(R.id.chat);
+        forums = v.findViewById(R.id.forums);
+
+        recommend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), Hobbies.class));
+                CustomIntent.customType(getContext(), "left-to-right");
+            }
+        });
 
         articlee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(), MenuArtikel.class));
+                CustomIntent.customType(getContext(), "right-to-left");
             }
         });
 
@@ -65,6 +79,7 @@ public class LoveFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(), SettingActivity.class));
+                CustomIntent.customType(getContext(), "left-to-right");
             }
         });
 
@@ -72,12 +87,14 @@ public class LoveFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(), ListKomunitas.class));
+                CustomIntent.customType(getContext(), "right-to-left");
             }
         });
         find.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(), MyArticle.class));
+                CustomIntent.customType(getContext(), "left-to-right");
             }
         });
         ad = (AnimationDrawable) sv.getBackground();
@@ -104,26 +121,30 @@ public class LoveFragment extends Fragment {
 
         colors = color_temp;
 
+        return v;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
+                slideHandler.removeCallbacks(Adapter.slide);
+                slideHandler.postDelayed(Adapter.slide, 1000);
             }
 
             @Override
             public void onPageSelected(int position) {
-
                 slideHandler.removeCallbacks(Adapter.slide);
-                slideHandler.postDelayed(Adapter.slide, 2000);
+                slideHandler.postDelayed(Adapter.slide, 1000);
             }
 
             @Override
             public void onPageScrollStateChanged(int state) {
-
+                slideHandler.removeCallbacks(Adapter.slide);
+                slideHandler.postDelayed(Adapter.slide, 1000);
             }
         });
-
-        return v;
-
     }
 }

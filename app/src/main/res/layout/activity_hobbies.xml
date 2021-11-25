@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/scroll_hobbies"
+    tools:context="com.example.selection.Hobbies">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Let us know about your Hobbies"
+            android:textColor="@color/hitam"
+            android:textSize="26sp" />
+
+        <ImageView
+            android:id="@+id/img_cs"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_gravity="center"
+            android:src="@drawable/progress_custom" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="So what would you interested for?"
+            android:textColor="@color/hitam"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/sport_button"
+                style="@style/HobbiesButton"
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:gravity="center"
+                android:text="Sports"
+                android:textColor="@color/hitam" />
+
+            <Button
+                android:id="@+id/clear1"
+                style="@style/ClearHobbies"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="20dp"
+                android:animateLayoutChanges="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:text="X"
+                android:textColor="@color/logout_button"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/music_button"
+                style="@style/HobbiesButton"
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:text="Music"
+                android:textColor="@color/hitam" />
+
+            <Button
+                android:id="@+id/clear2"
+                style="@style/ClearHobbies"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="20dp"
+                android:animateLayoutChanges="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:text="X"
+                android:textColor="@color/logout_button"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/nature_button"
+                style="@style/HobbiesButton"
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:text="Nature"
+                android:textColor="@color/hitam" />
+
+            <Button
+                android:id="@+id/clear5"
+                style="@style/ClearHobbies"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="20dp"
+                android:animateLayoutChanges="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:text="X"
+                android:textColor="@color/logout_button"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/social_button"
+                style="@style/HobbiesButton"
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:text="Social"
+                android:textColor="@color/hitam" />
+
+            <Button
+                android:id="@+id/clear3"
+                style="@style/ClearHobbies"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="20dp"
+                android:animateLayoutChanges="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:text="X"
+                android:textColor="@color/logout_button"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/automotive_button"
+                style="@style/HobbiesButton"
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:text="automotive"
+                android:textColor="@color/hitam" />
+
+            <Button
+                android:id="@+id/clear4"
+                style="@style/ClearHobbies"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="20dp"
+                android:animateLayoutChanges="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:text="X"
+                android:textColor="@color/logout_button"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/arts_button"
+                style="@style/HobbiesButton"
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:text="Arts"
+                android:textColor="@color/hitam" />
+
+            <Button
+                android:id="@+id/clear6"
+                style="@style/ClearHobbies"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="20dp"
+                android:animateLayoutChanges="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:text="X"
+                android:textColor="@color/logout_button"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/technology_button"
+                style="@style/HobbiesButton"
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:text="Technology"
+                android:textColor="@color/hitam" />
+
+            <Button
+                android:id="@+id/clear7"
+                style="@style/ClearHobbies"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="20dp"
+                android:animateLayoutChanges="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:text="X"
+                android:textColor="@color/logout_button"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/next"
+            style="@style/ClearHobbies"
+            android:layout_width="90dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:text="Next"
+            android:textColor="@color/hitam" />
+    </LinearLayout>
+
+</ScrollView>

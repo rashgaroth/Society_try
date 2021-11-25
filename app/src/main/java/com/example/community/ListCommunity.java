@@ -53,6 +53,7 @@ public class ListCommunity extends RecyclerView.Adapter<ListCommunity.ListViewHo
         Glide.with(context)
                 .load(komunitas.getGambar())
                 .crossFade()
+                .error(R.drawable.noimage)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.gambar);
         holder.rating.setText(komunitas.getRating());

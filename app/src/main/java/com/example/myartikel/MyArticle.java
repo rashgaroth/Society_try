@@ -1,7 +1,7 @@
 package com.example.myartikel;
 
-import android.os.Bundle;
 import android.content.Intent;
+import android.os.Bundle;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,7 +23,6 @@ public class MyArticle extends AppCompatActivity implements MyArtikelView, ListM
     MyArtikelPresenter presenter;
     ListMyArtikel listMyArtikel;
     RecyclerView recyclerView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

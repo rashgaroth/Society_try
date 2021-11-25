@@ -13,6 +13,46 @@ public class User {
     @SerializedName("nama_depan")private String nama_depan;
     @Expose
     @SerializedName("nama_belakang")private String nama_belakang;
+    @Expose
+    @SerializedName("alamat")private String alamat;
+    @Expose
+    @SerializedName("no_tlp")private String no_tlp;
+    @Expose
+    @SerializedName("twitter")private String twitter;
+    @Expose
+    @SerializedName("facebook")private String facebook;
+
+    public String getTwitter() {
+        return twitter;
+    }
+
+    public void setTwitter(String twitter) {
+        this.twitter = twitter;
+    }
+
+    public String getFacebook() {
+        return facebook;
+    }
+
+    public void setFacebook(String facebook) {
+        this.facebook = facebook;
+    }
+
+    public String getAlamat() {
+        return alamat;
+    }
+
+    public void setAlamat(String alamat) {
+        this.alamat = alamat;
+    }
+
+    public String getNo_tlp() {
+        return no_tlp;
+    }
+
+    public void setNo_tlp(String no_tlp) {
+        this.no_tlp = no_tlp;
+    }
 
     public int getId() {
         return id;

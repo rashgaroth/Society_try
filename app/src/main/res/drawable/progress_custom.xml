@@ -1,0 +1,13 @@
+<shape android:shape="ring"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:innerRadius="50dp" android:thickness="3dp" android:useLevel="false"
+    >
+
+    <gradient
+        android:startColor="@color/biru_muda"
+        android:centerColor="@color/followers"
+        android:endColor="@color/logout_button"
+        android:type="sweep"
+        />
+
+</shape>

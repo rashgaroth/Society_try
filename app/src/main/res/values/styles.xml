@@ -14,6 +14,20 @@
     <style name="LoginButton" parent="Widget.AppCompat.Button">
         <item name="android:background">@drawable/button</item>
     </style>
+    <style name="Join" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/button_join</item>
+    </style>
+    <style name="HobbiesButton" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/button_hobbies_mix</item>
+    </style>
+    <style name="ClearHobbies" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/button_delete</item>
+    </style>
+    <style name="TransparentButton" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/button_delete_mix</item>
+    </style>
+    <style name="SmallRatingBar" parent="Widget.AppCompat.RatingBar.Small">
+    </style>
     <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>

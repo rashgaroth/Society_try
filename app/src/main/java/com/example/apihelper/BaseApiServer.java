@@ -2,6 +2,7 @@ package com.example.apihelper;
 
 import com.example.model.Artikel;
 import com.example.model.Komunitas;
+import com.example.model.KomunitasHobby;
 import com.example.model.MyArtikel;
 import com.example.model.UpdateMyArtikel;
 import com.example.model.User;
@@ -25,7 +26,7 @@ public interface BaseApiServer {
                        @Part("author") RequestBody author,
                        @Part MultipartBody.Part body,
                        @Part("user_id") RequestBody user_id
-                              );
+    );
     @GET("read.php")
     Call<List<Artikel>> getArtikel();
     @GET("read_myartikel.php")
@@ -41,4 +42,15 @@ public interface BaseApiServer {
                                      @Part("deskripsi") RequestBody deskripsi);
     @GET("hapus.php")
     Call<List<UpdateMyArtikel>> hapusPost(@Query("id") String id);
+    @Multipart
+    @POST("read_community_hobbies.php")
+    Call<List<KomunitasHobby>> getCommunity(@Part("hobi1") RequestBody hobi1,
+                                            @Part("hobi2") RequestBody hobi2,
+                                            @Part("hobi3") RequestBody hobi3,
+                                            @Part("hobi3") RequestBody hobi4,
+                                            @Part("hobi3") RequestBody hobi5,
+                                            @Part("hobi3") RequestBody hobi6,
+                                            @Part("hobi3") RequestBody hobi7);
+    @GET("get_rating.php")
+    Call<List<Komunitas>> getData();
 }

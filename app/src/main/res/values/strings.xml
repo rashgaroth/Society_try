@@ -34,4 +34,18 @@
     <string name="deskripsi">Deskripsi</string>
     <string name="tanggal">tanggal</string>
     <string name="_2311">0</string>
+    <string name="complete_your_data">COMPLETE YOUR DATA!</string>
+    <string name="fn">First Name</string>
+    <string name="fn2">Your First Name</string>
+    <string name="ln">Last Name</string>
+    <string name="your_last_name">Your Last Name</string>
+    <string name="youraddress">YourAddress</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="phone">Your Phone Number</string>
+    <string name="e">Email</string>
+    <string name="your_email_for_login">Your Email For Login</string>
+    <string name="p">Password</string>
+    <string name="re_type_your_password">Re-Type your password</string>
+    <string name="axx">Put your priority to let us show your /n recommended community!</string>
+    <string name="desc">Komunitas ini adalah komunitas yang bergerak pada bidang musik, dengan anggota yang sudah dapat dibilang banyak komunitas ini juga sangat rekomen sekali bagi para pemuda yang ingin mengembangkan potensinya pada \n bidang musik, pemuda juga dapattampil pada event mingguan yang kita tayankan tiap tahunnya, seperti lomba pentas seni dan lain lain.</string>
 </resources>

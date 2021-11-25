@@ -20,14 +20,15 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/logo_putih"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:usesCleartextTraffic="true">
 
-        <service android:name="com.example.background.JobServices"
-            android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <service
+            android:name="com.example.background.JobServices"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -50,10 +51,19 @@
             android:name="com.example.myartikel.MyArticle"
             android:theme="@style/Theme.Design.Light.NoActionBar" />
         <activity
+            android:name="com.example.selection.HobbySelected"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity
             android:name="com.example.activity.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name="com.example.selection.Hobbies"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name="com.example.onclick.ArtikelSelected"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity
+            android:name="com.example.onclick.CommunitySelected"
             android:theme="@style/Theme.Design.Light.NoActionBar" />
         <activity
             android:name=".MainMenu"
@@ -65,7 +75,7 @@
             android:name="com.example.onclick.MyArtikelSelected"
             android:label="My Article"
             android:launchMode="singleTask"
-            android:theme="@style/Theme.AppCompat.Light"  />
+            android:theme="@style/Theme.AppCompat.Light" />
         <activity
             android:name="com.example.community.ListKomunitas"
             android:theme="@style/Theme.Design.Light.NoActionBar" />

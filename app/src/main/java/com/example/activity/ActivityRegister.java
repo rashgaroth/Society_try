@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -22,16 +23,16 @@ import com.android.volley.toolbox.Volley;
 import com.example.Connect;
 import com.example.society_try.R;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class ActivityRegister extends AppCompatActivity {
-    private EditText namaDepan, namaBelakang, email_register, password_register, ulangi;
+    private EditText namaDepan, namaBelakang, email_register, password_register, ulangi, alamat, notlp;
     ProgressDialog pDialog;
     String success;
+    ScrollView sv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,24 +44,32 @@ public class ActivityRegister extends AppCompatActivity {
         email_register = findViewById(R.id.email_register);
         password_register = findViewById(R.id.password_register);
         ulangi = findViewById(R.id.rePassword);
+        sv = (ScrollView) findViewById(R.id.scroll_register);
+        alamat = findViewById(R.id.alamat);
+        notlp = findViewById(R.id.nomorTlp);
+
        findViewById(R.id.buttonRegister).setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
                if(TextUtils.isEmpty(namaDepan.getText().toString())){
-                   String pesan = "Nama depan harus di isi!";
-                   String isi = "Nama depan harus di isi. Contoh : ujang, maman, cecep";
+                   String pesan = "Required Fields";
+                   String isi = "Example : rash, dwi, smith, allan";
                    showDialog(pesan, isi);
                }else if(TextUtils.isEmpty(namaBelakang.getText().toString())){
-                   String pesan = "Nama belakang harus di isi!";
-                   String isi = "Nama belakang harus di isi. Contoh : maemunah, priyono, marcecep";
+                   String pesan = "Required Fields";
+                   String isi = "Example : yan, lennon, mccartney";
                    showDialog(pesan, isi);
                }else if(TextUtils.isEmpty(email_register.getText().toString())){
-                   String pesan = "Email harus di isi!";
-                   String isi = "Email harus di isi. Contoh : ujang@gmail.com";
+                   String pesan = "Required Fields";
+                   String isi = "Example : ujang@gmail.com";
                    showDialog(pesan, isi);
                }else if(TextUtils.isEmpty(password_register.getText().toString())){
-                   String pesan = "Password harus di isi!";
-                   String isi = "Password harus di isi. Contoh : ******";
+                   String pesan = "Required Fields";
+                   String isi = "Example : ******";
+                   showDialog(pesan, isi);
+               }else if (TextUtils.isEmpty(alamat.getText().toString()) && TextUtils.isEmpty(notlp.getText().toString())){
+                   String pesan = "Address and Phone number cannot be empty";
+                   String isi = "Address and Phone number cannot be empty";
                    showDialog(pesan, isi);
                }
                else{
@@ -74,14 +83,14 @@ public class ActivityRegister extends AppCompatActivity {
     public void onBackPressed() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setCancelable(false);
-        builder.setMessage("Gagal Registrasi?");
-        builder.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+        builder.setMessage("Cancel Registration?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 startActivity(new Intent(ActivityRegister.this, LoginActivity.class));
             }
         });
-        builder.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 //if user select "No", just cancel this dialog and continue with app
@@ -95,38 +104,40 @@ public class ActivityRegister extends AppCompatActivity {
     private void register() {
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(true);
-        pDialog.setMessage("silahkan tunggu... ");
+        pDialog.setMessage("Wait a minute...");
 
         Connect con = new Connect();
+        pDialog.show();
         final String nama_depan = namaDepan.getText().toString().trim();
         final String nama_belakang = namaBelakang.getText().toString().trim();
         final String email = email_register.getText().toString().trim();
         final String password = password_register.getText().toString().trim();
         final String repassword = ulangi.getText().toString().trim();
+        final String alamat_user = alamat.getText().toString().trim();
+        final String notlp_user = notlp.getText().toString().trim();
         StringRequest stringRequest = new StringRequest(Request.Method.POST, con.Regist(), new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         try {
-                            pDialog.show();
                             boolean cancel = false;
                             JSONObject jsonObject = new JSONObject(response);
-                            success = jsonObject.optString("success");
+                            success = jsonObject.getString("success");
                             if(success.equals("1")){
                                 if(repassword.equals(password)){
-                                    Toast.makeText(ActivityRegister.this, "sukses", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(ActivityRegister.this, "Success Registration!", Toast.LENGTH_LONG).show();
                                     pDialog.dismiss();
                                     startActivity(new Intent(ActivityRegister.this, LoginActivity.class));
                                 }else{
                                     cancel = true;
                                     pDialog.dismiss();
-                                    ulangi.setError("Penulisan Password harus sama");
+                                    ulangi.setError("Password must be same!");
                                     ulangi.setBackgroundResource(R.drawable.textfield_error);
                                     if (cancel){
                                         ulangi.requestFocus();
                                     }
                                     if (repassword.equals("")){
                                         cancel = true;
-                                        ulangi.setError("Kolom wajib di isi");
+                                        ulangi.setError("This column cannot be empty!");
                                         ulangi.setBackgroundResource(R.drawable.textfield_error);
                                         pDialog.dismiss();
                                         if (cancel){
@@ -135,15 +146,15 @@ public class ActivityRegister extends AppCompatActivity {
                                     }
                                 }
                             }
-                        } catch (JSONException e) {
-                            Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_LONG).show();
+                        } catch (Exception e) {
+                            Toast.makeText(getApplicationContext(), "Error1 : "+e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
                         }
                     }
                 },
                     new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), error.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Error2 : "+error.getLocalizedMessage(), Toast.LENGTH_LONG).show();
                         pDialog.dismiss();
                     }
                 })
@@ -156,6 +167,8 @@ public class ActivityRegister extends AppCompatActivity {
                 params.put("namaBelakang", nama_belakang);
                 params.put("email_register", email);
                 params.put("password_register", password);
+                params.put("alamat", alamat_user);
+                params.put("no_tlp", notlp_user);
                 return params;
             }
         };
@@ -174,7 +187,7 @@ public class ActivityRegister extends AppCompatActivity {
         alertDialogBuilder
                 .setMessage(isi)
                 .setCancelable(false)
-                .setNegativeButton("Oke",new DialogInterface.OnClickListener() {
+                .setNegativeButton("Ok",new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
                     }

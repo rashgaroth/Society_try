@@ -119,6 +119,7 @@ public class MenuArtikel extends AppCompatActivity implements View.OnClickListen
     private void hilang(){
         judul.setText("");
         deskripsi.setText("");
+        imageView.setImageResource(R.drawable.noimage);
         imageView.setVisibility(View.GONE);
     }
 
@@ -172,7 +173,7 @@ public class MenuArtikel extends AppCompatActivity implements View.OnClickListen
                         progressDialog.show();
                         uploadFile(title, desc, author, bitmapUpload, idString);
                     }else{
-                        Toast.makeText(this, "Tidak ada gambar yang diupload", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "There is no image on your post", Toast.LENGTH_SHORT).show();
                     }
                 }
                 return true;
@@ -271,7 +272,7 @@ public class MenuArtikel extends AppCompatActivity implements View.OnClickListen
     public void onBackPressed() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setCancelable(false);
-        builder.setMessage("Batalkan?");
+        builder.setMessage("Cancel your post?");
         builder.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
